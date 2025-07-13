@@ -1,0 +1,9 @@
+@misc{harmoniaZFC2025,
+  author       = {Cato Erga},
+  title        = {Harmonia-ZFC: Complete Formal Axiomatic Model (v1.0)},
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.15872727},
+  url          = {https://zenodo.org/record/15872727},
+  note         = {Licensed under CC BY 4.0. ORCID: 0009-0000-3215-1012}
+}
