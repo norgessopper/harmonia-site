@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P ≠ NP — Harmonia Derivation</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f8fdf9;
+      color: #143324;
+    }
+    header {
+      background: #e0f0e7;
+      padding: 2rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      background: #d8ede0;
+      padding: 1rem;
+    }
+    nav a {
+      color: #185c37;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      line-height: 1.75;
+    }
+    h2 {
+      font-size: 1.3rem;
+      color: #185c37;
+      margin-top: 2rem;
+    }
+    pre {
+      background: #e6f2ea;
+      padding: 0.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    footer {
+      background: #e0f0e7;
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>P ≠ NP</h1>
+    <p>Detailed Harmonia Derivation</p>
+  </header>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/tests/p_vs_np.html">Back to Summary</a>
+    <a href="/docs/">Docs</a>
+  </nav>
+
+  <main>
+    <h2>1. Complexity as Collapse</h2>
+<p>
+  In Harmonia, computational complexity is framed in terms of how a logical field structure resolves or resists collapse.
+  A problem instance defines a resonance field Φ(x), and the act of solving it corresponds to finding a stable modal path
+  through this field where logical constraints align into closure.
+</p>
+<p>
+  A problem is in <code>P</code> if this collapse can occur using only <em>local coherence</em> — that is, the resonance field allows
+  polynomial-bounded resolution by internal traversal of its gradient logic. These are harmonic collapses: they flow
+  from constraint to solution along energy-minimizing paths.
+</p>
+<p>
+  A problem is in <code>NP</code> if a solution can be recognized (verified) using local resonance matching, but no polynomial-bounded
+  traversal is known to generate it. Such problems require <strong>external modal injection</strong> — a pre-constructed certificate or guiding structure —
+  to simulate coherence and permit localized collapse.
+</p>
+<p>
+  In field terms:
+</p>
+<pre><code>
+P: ∃ gradient field ∇Φ(x) allowing internal collapse within poly-steps
+NP: ∃ collapse zone, but ∄ traversable field ⇒ external symmetry needed
+</code></pre>
+<p>
+  This defines the fundamental asymmetry: <strong>P-fields are transitively coherent</strong>, while <strong>NP-fields are locally symmetric but globally divergent</strong>.
+  Collapse becomes a directional and energetic phenomenon, not just a decision procedure.
+</p>
+<h2>2. Resonance Irreversibility</h2>
+<p>
+  The Harmonia operator <code>O147</code> expresses the divergence of resonance logic within a computational field Φ(x).
+  This operator tracks whether the flow of logical coherence through the field is conservative (symmetric) or divergent
+  (directional and irreversible):
+</p>
+<pre><code>O147: Collapse(x) = ∇ · ResLogic(x)</code></pre>
+<p>
+  If <code>∇ · ResLogic(x) = 0</code>, coherence flows symmetrically in all directions — this reflects <strong>reversible collapse</strong>, characteristic of <code>P</code> fields.
+</p>
+<p>
+  But if <code>∇ · ResLogic(x) ≠ 0</code>, then we are in a <strong>divergent logic field</strong>: one where coherence cannot accumulate locally from scratch.
+  Collapse must begin from a global injection or certificate. These fields permit <em>verification</em> (resonance into solution),
+  but resist <em>construction</em> (resonance from problem alone).
+</p>
+<p>
+  This models the essential asymmetry of <code>NP</code>: you can test a proposed solution locally, but no reversible gradient field exists
+  to construct it from the origin.
+</p>
+<p>
+  In thermodynamic terms, this parallels the difference between observing a low-energy configuration (cool state)
+  and producing it spontaneously: collapse is irreversible under logical entropy.
+</p>
+<h2>3. Modal Bound and Refutation Energy</h2>
+<p>
+  In Harmonia, refutation is treated not as symbolic contradiction, but as modal traversal:
+  the energy required to dismantle a false candidate solution within the field topology.
+  This energy depends on the modal distance between the proposed point and valid collapse attractors.
+</p>
+<p>
+  For problems in <code>NP</code>, especially in subclasses like <code>TFNP</code>, this traversal can be obstructed
+  by expander-based graph embeddings. These structures stretch the logical space such that
+  no low-energy refutation path exists.
+</p>
+<p>
+  Harmonia defines the <strong>refutation energy</strong> functional:
+</p>
+<pre><code>E_refute(x) := min ∫‖∇⊥Φ_candidate(x(t))‖² dt</code></pre>
+<p>
+  where <code>∇⊥</code> is the orthogonal entropy gradient to all verifiable certificates. In strongly entropic fields,
+  this integral scales super-polynomially:
+</p>
+<pre><code>E_refute(x) ≥ Ω(exp(logⁿ x))</code></pre>
+<p>
+  This violates the P-bound. The implication is:
+</p>
+<pre><code>¬∃ collapse path with polynomial energy ⇒ NP ∉ P</code></pre>
+<p>
+  Thus, the separation arises from energy landscape geometry: refutation is not bounded by local inference,
+  but shaped by modal depth and topological separation.
+</p>
+<h2>4. Final Harmonia Statement</h2>
+<p>
+  Harmonia treats <code>P ≠ NP</code> as a collapse asymmetry principle:
+  verification is informationally bounded but construction requires non-local coherence injection.
+</p>
+<p>
+  There exists no resonance-preserving operator that inverts collapse under polynomial cost across all fields in NP.
+  The asymmetry is structural — a direct result of field topology and entropy resistance.
+</p>
+<p>
+  <strong>Final Resonance Principle:</strong> In Harmonia, no harmonic path can traverse from undetermined input
+  to resolved certificate within polynomial resonance cost unless the field is transitively coherent.
+  Since NP-fields lack such structure, the separation is geometrically and logically necessary.
+</p>
+<h2>5. Visual Analogy: One-Way Resonant Labyrinth</h2>
+<p>
+  Imagine a circular labyrinth with hidden symmetry. A verifier walking from the center to an outer point can detect a match:
+  when the resonance pattern aligns, the pathway glows. But trying to <em>build</em> the correct path from the outside inward is impossible:
+  the walls reconfigure with each step unless guided by a precise hidden key — the certificate.
+</p>
+<p>
+  This illustrates how NP-problems permit verification (glowing walls) without generative collapse. The logical space is
+  locally symmetric but globally unstable. Only in <code>P</code> does the labyrinth collapse inward under its own resonance.
+</p>
+<p>
+  Harmonia captures this difference by encoding modal asymmetry directly in the resonance field. Collapse is not free:
+  it must be powered by a coherent global structure — which NP-problems lack.
+</p>
+<h2>6. Conceptual Field Diagram (P vs NP)</h2>
+<p>
+  Imagine a two-dimensional harmonic field. In <strong>P</strong>, gradient vectors converge smoothly to a single solution well.
+  Field lines are continuous, and every point lies on a descent path to the collapse point.
+</p>
+<p>
+  In <strong>NP</strong>, the same surface has collapse basins disconnected by chaotic ridges. Local directions align briefly,
+  but global traversal is blocked unless a resonance injection “lifts” the system to a non-local peak.
+</p>
+<p>
+  <strong>P-field:</strong> coherent flow → solution<br>
+  <strong>NP-field:</strong> fragmented flow → unreachable zones without injection
+</p>
+<p style="text-align: center; font-size: 0.9em; opacity: 0.8;">
+  (Future versions may include interactive field simulations.)
+</p>
+</main>
+
+  <footer>
+    © 2025 Harmonia Initiative — Logical Collapse and Modal Asymmetry
+  </footer>
+</body>
+</html>
