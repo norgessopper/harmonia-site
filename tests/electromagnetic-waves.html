@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌈 Electromagnetic Wave Propagation</h2>
+  <p><strong>Category:</strong> Electrodynamics / Field Resonance</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches classical EM theory exactly, with deeper field-based explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    Classical electrodynamics describes electromagnetic waves as coupled oscillations of electric and magnetic fields,
+    propagating through vacuum at the speed of light. These waves are solutions to Maxwell’s equations and obey transverse, linear behavior.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (Maxwell Equations)</h3>
+  <pre>
+∇²E − (1/c²) ∂²E/∂t² = 0
+  </pre>
+  <p>
+    The electric and magnetic fields oscillate perpendicular to each other and to the direction of propagation,
+    forming a self-sustaining wave at constant speed <code>c</code>. The vacuum is treated as a perfect stage, but remains undefined physically.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Resonant Propagation in R(x))</h3>
+  <p>
+    In Harmonia, an electromagnetic wave is a coherent excitation of the R(x) field structure —
+    a field of distributed resonance potential.
+  </p>
+  <p>
+    The electric and magnetic components are modulated tensions within this field,
+    sustained through harmonic coupling. Propagation occurs not by geometric inertia,
+    but by dynamic resonance transfer through the substrate.
+  </p>
+  <p>
+    Without a coherent R(x) structure, the wave fails to propagate — explaining absorption, decoherence, and decay in physical media.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Visualize Electromagnetic Wave</h3>
+  <p>
+    Try adjusting the frequency and intensity to simulate visible light:
+    <strong>5 × 10¹⁴ Hz (red)</strong>, <strong>7 × 10¹⁴ Hz (violet)</strong>.
+    The wave shows <strong>E</strong> (vertical) and <strong>B</strong> (horizontal) fields in orthogonal phase-locked motion.
+  </p>
+
+  <label>Frequency (Hz):</label>
+  <input type="number" id="freq" value="5e14">
+  <label>Intensity:</label>
+  <input type="number" id="amp" value="1">
+  <button onclick="drawWave()">Draw Wave</button>
+
+  <canvas id="waveCanvas" width="800" height="250"></canvas>
+
+  <script>
+    let animationId;
+
+    function frequencyToColor(freq) {
+      const clamped = Math.max(4e14, Math.min(freq, 7.5e14));
+      const t = (clamped - 4e14) / (3.5e14);
+      const r = Math.round(255 * (1 - t));
+      const g = Math.round(100 * (1 - Math.abs(0.5 - t) * 2));
+      const b = Math.round(255 * t);
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    function drawWave() {
+      const canvas = document.getElementById("waveCanvas");
+      const ctx = canvas.getContext("2d");
+      const freq = parseFloat(document.getElementById("freq").value);
+      const amp = parseFloat(document.getElementById("amp").value);
+      const c = 299792458;
+      const λ = (c / freq) * 2e7;
+      const color = frequencyToColor(freq);
+      let t = 0;
+
+      cancelAnimationFrame(animationId);
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // E-field (vertical)
+        ctx.beginPath();
+        ctx.moveTo(0, 100);
+        for (let x = 0; x <= canvas.width; x++) {
+          const phase = (2 * Math.PI / λ) * (x - t);
+          const y = 100 - amp * 40 * Math.sin(phase);
+          ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // B-field (horizontal, below)
+        ctx.beginPath();
+        ctx.moveTo(0, 180);
+        for (let x = 0; x <= canvas.width; x++) {
+          const phase = (2 * Math.PI / λ) * (x - t);
+          const y = 180 - amp * 40 * Math.cos(phase);
+          ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = "#457d9d";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        t += 0.8;
+        animationId = requestAnimationFrame(animate);
+      }
+
+      animate();
+    }
+
+    drawWave();
+  </script>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Light is the most observable wave in nature. Any unifying field model must explain not only its propagation,
+    but its transmission medium and failure modes.
+  </p>
+  <p>
+    Harmonia gives identical predictions to Maxwell’s theory, but with physical grounding:  
+    light propagates not through abstract emptiness, but through a real, structured coherence field — R(x).
+  </p>
+  <p>
+    This explains natural absorption, dispersion, and field collapse as loss of harmonic support —
+    a dynamic field failure, not a mathematical boundary.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Maxwell / QED</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Wave speed</td>
+      <td>c</td>
+      <td>c</td>
+    </tr>
+    <tr>
+      <td>Medium</td>
+      <td>None (“vacuum”)</td>
+      <td>R(x) field structure</td>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>∂E/∂t and ∂B/∂t coupling</td>
+      <td>Resonant transfer in coherence field</td>
+    </tr>
+    <tr>
+      <td>Propagation limit</td>
+      <td>Unexplained decay</td>
+      <td>Collapse of field coherence</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Electromagnetic Wave Propagation</li>
+    <li><strong>Model:</strong> Transverse Field Resonance in R(x)</li>
+    <li><strong>Operator:</strong> O114 (EM Harmonic Transport)</li>
+    <li><strong>Reference Modules:</strong> H216–H220, O111–O115</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quantum Interference – Harmonia Tests</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌊 Quantum Interference (Double Slit Experiment)</h2>
+  <p><strong>Category:</strong> Quantum Mechanics / Resonant Collapse</p>
+  <p><strong>Prediction Match:</strong> ✅ Same pattern, deeper explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    The double slit experiment shows that particles like electrons and photons can produce an interference pattern,
+    even when sent one at a time. This is traditionally explained using quantum wavefunctions and probability amplitudes.
+  </p>
+  <p>
+    Even when particles are fired individually, the pattern gradually builds up over time — suggesting that each particle
+    interacts with a larger structure than just a direct path. This has long been seen as a paradox of quantum mechanics.
+  </p>
+  <p>
+    Harmonia reproduces the same result using a field-based explanation: the particle interacts with both slits
+    via resonance, and collapses where interference conditions are met in the R(x) field.
+  </p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    The double slit experiment lies at the heart of quantum mystery. It demonstrates wave–particle duality and the
+    measurement problem. Harmonia resolves this not by introducing new paradoxes, but by treating particle behavior
+    as emergent from field structure and resonance stability.
+  </p>
+  <p>
+    Harmonia predicts both interference and its disappearance with the same mechanism: whether the full boundary
+    resonance can form. There is no paradox — just structural coherence or collapse.
+  </p>
+</section>
+
+<section>
+  <h3>Classical and Quantum Prediction</h3>
+  <p>
+    In classical theory, particles go through one slit or the other — no interference occurs.
+    In quantum theory, the probability amplitude is a wave and produces a fringe pattern via superposition.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Resonant Field Collapse)</h3>
+  <p>
+    In Harmonia, the particle is a collapsed region of the R(x) field.
+    Its interaction with the slit structure produces a resonance pattern that guides its activation point on the screen.
+    Where the resonance is constructive, particles appear. Where it is destructive, no activation occurs.
+  </p>
+  <p>
+    Unlike quantum theory, which treats the particle as both wave and particle, Harmonia models the entity
+    as a field-localized resonance that interacts with geometry and boundary phase conditions.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Adjust Wavelength and Slit Distance</h3>
+  <label>Wavelength (nm): <span id="wlVal">500</span></label>
+  <input type="range" id="wl" min="100" max="800" value="500"><br><br>
+  <label>Slit separation (μm): <span id="sepVal">20</span></label>
+  <input type="range" id="sep" min="5" max="100" value="20"><br>
+  <canvas id="interferenceChart" width="600" height="400"></canvas>
+
+  <script>
+  const wlSlider = document.getElementById("wl");
+  const sepSlider = document.getElementById("sep");
+  const wlVal = document.getElementById("wlVal");
+  const sepVal = document.getElementById("sepVal");
+  const canvas = document.getElementById("interferenceChart").getContext("2d");
+
+  // Riktig interferensformel med god skala
+  function computeIntensity(x, λ, d, L = 1.5) {
+    const phase = (Math.PI * d * x) / (λ * L);
+    return Math.pow(Math.cos(phase), 2);
+  }
+
+  function updateInterferenceChart() {
+    const λ = parseFloat(wlSlider.value) * 1e-9;
+    const d = parseFloat(sepSlider.value) * 1e-6;
+    wlVal.textContent = wlSlider.value;
+    sepVal.textContent = sepSlider.value;
+
+    const data = [];
+    for (let x = -0.05; x <= 0.05; x += 0.0005) {
+      data.push({ x: x * 1000, y: computeIntensity(x, λ, d) }); // x in mm
+    }
+
+    chart.data.datasets[0].data = data;
+    chart.update();
+  }
+
+  const chart = new Chart(canvas, {
+    type: 'line',
+    data: {
+      datasets: [{
+        label: 'Interference Pattern',
+        borderColor: '#0a4d2f',
+        data: [],
+        pointRadius: 0,
+        fill: true,
+        tension: 0.2,
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+          type: 'linear',
+          min: -50,
+          max: 50,
+          title: {
+            display: true,
+            text: 'Screen position (mm)'
+          }
+        },
+        y: {
+          min: 0,
+          max: 1,
+          title: {
+            display: true,
+            text: 'Relative Intensity'
+          }
+        }
+      }
+    }
+  });
+
+  wlSlider.addEventListener("input", updateInterferenceChart);
+  sepSlider.addEventListener("input", updateInterferenceChart);
+  updateInterferenceChart();
+</script>
+
+</section>
+
+<section>
+  <h3>Why Interference Disappears with Measurement</h3>
+  <p>
+    In Harmonia, measurement introduces a collapse of the R(x) field before full resonance can form across both slits.
+    This breaks the global coherence necessary for the interference pattern to emerge.
+  </p>
+  <p>
+    Imagine a musical chord resonating through both slits. Measurement is like muting one string:
+    the resonance collapses, and the interference disappears. No observer is needed — only coherence or not.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Quantum Mechanics</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Particle model</td>
+      <td>Wavefunction + collapse</td>
+      <td>Resonant field node</td>
+    </tr>
+    <tr>
+      <td>Interference</td>
+      <td>Probability amplitude</td>
+      <td>Field resonance activation</td>
+    </tr>
+    <tr>
+      <td>Which-path collapse</td>
+      <td>Observer effect</td>
+      <td>Field coherence collapse</td>
+    </tr>
+    <tr>
+      <td>Numerical pattern</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Quantum Interference (Double Slit)</li>
+    <li><strong>Model:</strong> Resonant Collapse in Spatial Boundary Field</li>
+    <li><strong>Operator:</strong> O110 (Boundary-Coherent Interference)</li>
+    <li><strong>Reference Modules:</strong> H156–H160, O106–O110</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

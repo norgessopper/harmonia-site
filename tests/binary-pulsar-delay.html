@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🧭 Binary Pulsar Time Delay</h2>
+  <p><strong>Category:</strong> Gravitation / Dynamic Field Interference</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches GR timing variation, with dynamic field-based explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In binary pulsar systems, such as PSR B1913+16 (Hulse–Taylor), pulses emitted by one neutron star are observed from Earth
+    with small periodic delays. These delays occur because the signal must travel through the gravitational field of the companion star,
+    causing an additional Shapiro-like delay.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (General Relativity)</h3>
+  <p>
+    The time delay is computed from the signal's path through curved spacetime, dynamically distorted by the motion of both masses.
+    GR predicts a variable delay based on orbital parameters:
+  </p>
+  <pre>
+Δt(t) ≈ (2GM/c³) ⋅ −ln[1 − −v(t) ⋅ γ(t)]
+  </pre>
+  <p>
+    Where the precise shape depends on orbital phase, velocity, and impact parameter.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Field Interference Delay)</h3>
+  <p>
+    In Harmonia, the signal pulse propagates through a dynamic resonance field R(x), which is distorted by both stars.
+    When the pulse passes near the companion, field compression increases locally, reducing phase velocity.
+  </p>
+  <p>
+    The delay arises not from geometry, but from a dynamically varying interference of two field compression zones:
+    one moving, one radiating.
+  </p>
+  <p>
+    The predicted variation in Δt is equivalent to GR, but its origin is purely physical: changing coherence gradients,
+    not spacetime deformation.
+  </p>
+</section>
+
+<section>
+  <h3>📐 Estimate Maximum Delay</h3>
+  <label>Mass of Pulsar M₁ (kg):</label>
+  <input type="number" id="m1" value="1.4e30">
+  <label>Mass of Companion M₂ (kg):</label>
+  <input type="number" id="m2" value="1.4e30">
+  <label>Separation r (m):</label>
+  <input type="number" id="r" value="1e9">
+  <button onclick="estimateBinaryDelay()">Estimate Max Δt</button>
+  <div id="out" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function estimateBinaryDelay() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const m1 = parseFloat(document.getElementById("m1").value);
+      const m2 = parseFloat(document.getElementById("m2").value);
+      const r = parseFloat(document.getElementById("r").value);
+      if ([m1, m2, r].some(x => isNaN(x) || x <= 0)) {
+        document.getElementById("out").innerText = "Please enter valid values.";
+        return;
+      }
+      const M = m2; // only the companion matters for delay of signal from m1
+      const b = r / 2;
+      const delay = (2 * G * M / Math.pow(c, 3)) * Math.log((4 * r * r) / (b * b));
+      document.getElementById("out").innerText = `Estimated maximum delay: Δt = ${delay.toExponential(6)} s`;
+    }
+  </script>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Binary pulsars are nature's most precise gravitational laboratories. The timing of their pulses is stable to microseconds,
+    and any delay must be accounted for by theory.
+  </p>
+  <p>
+    Harmonia matches GR predictions exactly, but frames the phenomenon as a dynamic modulation in resonance field coherence,
+    not geometric path elongation. This allows better insight into wave–matter interaction.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In Harmonia, the timing variation arises because the signal from the pulsar must cross a resonance field shaped by
+    both stars. The R(x) field is dynamically modulated by the moving mass of the companion.
+  </p>
+  <p>
+    This means that the signal pulse “surfs” through a transient field environment — sometimes it moves through more compressed zones,
+    sometimes through less. The effective phase speed changes subtly in each case, leading to a small variation in arrival time.
+  </p>
+  <p>
+    Unlike GR, which models this as a geodesic distortion in a 4D spacetime, Harmonia models it as
+    constructive/destructive interference of field compression zones.
+  </p>
+  <p>
+    <em>Metaphor:</em> Imagine a boat crossing a lake with traveling waves from both sides — depending on where the waves meet, the boat
+    moves faster or slower. The signal pulse is like that boat — surfing through a living field structure.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Cause of delay</td>
+      <td>Curved spacetime near companion</td>
+      <td>Dynamic field compression</td>
+    </tr>
+    <tr>
+      <td>Propagation model</td>
+      <td>Geodesics in evolving metric</td>
+      <td>Resonance through modulated R(x)</td>
+    </tr>
+    <tr>
+      <td>Timing shape</td>
+      <td>Log-phase velocity shift</td>
+      <td>Same (from ε(x, t) field)</td>
+    </tr>
+    <tr>
+      <td>Explanation</td>
+      <td>Metric theory</td>
+      <td>Field interference logic</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Binary Pulsar Time Delay</li>
+    <li><strong>Model:</strong> Dynamic Coherence Interference</li>
+    <li><strong>Operator:</strong> O105 (Gravitational Delay Integral)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

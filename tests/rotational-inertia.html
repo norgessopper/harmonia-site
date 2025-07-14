@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌀 Rotational Inertia as Field Integration</h2>
+  <p><strong>Category:</strong> Rotation / Global Coherence Coupling</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches classical and relativistic moment of inertia behavior, with field-based explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In classical mechanics, rotational inertia (moment of inertia) measures an object's resistance to angular acceleration.
+    It depends on the object's mass and how that mass is distributed relative to the axis of rotation.
+  </p>
+  <p>
+    The general formula is:
+  </p>
+  <pre>
+I = ∫ r² dm
+  </pre>
+  <p>
+    This quantifies how mass at a greater distance from the axis contributes more to rotational inertia.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Field Integration of Rotational Coherence)</h3>
+  <p>
+    In Harmonia, rotational inertia arises from the degree to which an object's internal R(x) structure is phase-locked
+    to the symmetry of the surrounding field. Resistance to rotation is not merely geometric, but emerges from how deeply
+    the object’s harmonic structure is entangled with the background coherence.
+  </p>
+  <p>
+    The farther mass is from the axis, the more field coherence must be shifted across space during rotation —
+    increasing the energetic cost of reconfiguration. Rotational inertia thus becomes a global measure of phase-inertia
+    across the object’s embedded volume in R(x).
+  </p>
+</section>
+
+<section>
+  <h3>📐 Estimate Moment of Inertia</h3>
+  <label>Mass m (kg):</label>
+  <input type="number" id="mass" value="5.0">
+  <label>Radius r (m):</label>
+  <input type="number" id="radius" value="2.0">
+  <button onclick="calcI()">Compute</button>
+  <div id="iout" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcI() {
+      const m = parseFloat(document.getElementById("mass").value);
+      const r = parseFloat(document.getElementById("radius").value);
+      if (isNaN(m) || isNaN(r) || m <= 0 || r <= 0) {
+        document.getElementById("iout").innerText = "Please enter valid values.";
+        return;
+      }
+      const I = 0.5 * m * r * r;
+      document.getElementById("iout").innerText = `Approximate moment of inertia (solid cylinder): I ≈ ${I.toFixed(3)} kg·m²`;
+    }
+  </script>
+
+  <p><small>Formula: I = (1/2) m r² for a solid cylinder rotating about its axis</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Unlike linear inertia, rotational inertia inherently involves spatial symmetry. But classical theory offers no explanation
+    for <em>why</em> matter resists angular acceleration — only how to calculate it.
+  </p>
+  <p>
+    Harmonia provides a physical explanation: rotation requires rephasing a body’s internal field structure relative to its surroundings.
+    The farther out a region is, the more surrounding coherence it disturbs during motion.
+  </p>
+  <p>
+    This connects the local experience of rotation to the global coherence of space — aligning with Mach’s principle and extending it.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In standard physics, moment of inertia is treated as a purely geometric property of mass distribution.
+    But what exactly “pushes back” when a disk rotates in empty space?
+  </p>
+  <p>
+    Harmonia suggests that rotational inertia is the energy required to shift the phase alignment of an object’s R(x)
+    structure relative to its ambient field. The outer regions must shear through more of the surrounding coherence,
+    and this phase realignment is energetically costly.
+  </p>
+  <p>
+    <em>Metaphor:</em> Imagine rotating a flexible lattice submerged in a dense harmonic medium.
+    The outer parts feel more resistance — not just because they move faster, but because they must displace and re-align more of the surrounding field structure.
+    In Harmonia, the “medium” is R(x) — and inertia is the cost of disrupting phase-locking in that field.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical Model</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Geometric mass distribution</td>
+      <td>Phase coupling to background field</td>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>I = ∫ r² dm</td>
+      <td>Same, interpreted as phase resistance in R(x)</td>
+    </tr>
+    <tr>
+      <td>Physical origin</td>
+      <td>Abstract resistance</td>
+      <td>Energetic cost of reconfiguring field coherence</td>
+    </tr>
+    <tr>
+      <td>Relation to universe</td>
+      <td>Local only</td>
+      <td>Globally conditioned (Mach-consistent)</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Rotational Inertia as Field Integration</li>
+    <li><strong>Model:</strong> Coherent Phase Resistance in R(x)</li>
+    <li><strong>Operator:</strong> O103 (Rotational Field Locking)</li>
+    <li><strong>Reference Modules:</strong> H191–H195, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

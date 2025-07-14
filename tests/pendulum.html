@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🕰️ Pendulum Oscillation in Variable Gravitational Fields</h2>
+  <p><strong>Category:</strong> Classical Mechanics / Modal Field Resonance</p>
+  <p><strong>Prediction Match:</strong> ✅ Explains period variation by field compression in R(x), not just g</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In classical physics, a pendulum swings with a period determined by its length and the local gravitational acceleration g:
+    <code>T = 2π√(L/g)</code>. But what does “g” actually represent?
+  </p>
+  <p>
+    In Harmonia, gravitational acceleration is not a fundamental quantity — it is a <strong>derivative effect</strong> of 
+    how compressed the field R(x) is at that location. A pendulum doesn’t “feel gravity” — it oscillates with a natural frequency
+    based on the local modal tension in the field.
+  </p>
+  <p>
+    This test shows how pendulums at different altitudes — for example, at sea level and on a mountain — have slightly different periods,
+    and how this difference emerges naturally from the <em>modal coherence gradient</em> in R(x).
+  </p>
+</section>
+
+<section>
+  <h3>🌀 Pendulum Simulation (Variable Field Strength)</h3>
+  <p>
+    Below, two pendulums swing side by side. One is in a stronger field (e.g. lower altitude), the other in a weaker field (higher altitude).
+    Their lengths are equal, but their local field compression differs — affecting their modal period.
+  </p>
+  <canvas id="pendulumSim" width="600" height="250" style="background:#f7fff9; border-radius:12px;"></canvas>
+  <script>
+    const canvas = document.getElementById("pendulumSim");
+    const ctx = canvas.getContext("2d");
+
+    let t = 0;
+    const L = 100; // arbitrary units
+    const g1 = 9.81; // sea level
+    const g2 = 9.70; // mountain
+
+    function drawPendulums() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      t += 0.02;
+
+      const centerX1 = 180;
+      const centerX2 = 420;
+      const centerY = 40;
+
+      const T1 = 2 * Math.PI * Math.sqrt(L / g1);
+      const T2 = 2 * Math.PI * Math.sqrt(L / g2);
+
+      const angle1 = Math.sin((2 * Math.PI / T1) * t) * 0.6;
+      const angle2 = Math.sin((2 * Math.PI / T2) * t) * 0.6;
+
+      const length = 80;
+
+      const x1 = centerX1 + length * Math.sin(angle1);
+      const y1 = centerY + length * Math.cos(angle1);
+      const x2 = centerX2 + length * Math.sin(angle2);
+      const y2 = centerY + length * Math.cos(angle2);
+
+      ctx.lineWidth = 2;
+
+      // Pendulum 1
+      ctx.beginPath();
+      ctx.moveTo(centerX1, centerY);
+      ctx.lineTo(x1, y1);
+      ctx.strokeStyle = "#229966";
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x1, y1, 6, 0, 2 * Math.PI);
+      ctx.fillStyle = "#229966";
+      ctx.fill();
+
+      // Pendulum 2
+      ctx.beginPath();
+      ctx.moveTo(centerX2, centerY);
+      ctx.lineTo(x2, y2);
+      ctx.strokeStyle = "#cc8844";
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x2, y2, 6, 0, 2 * Math.PI);
+      ctx.fillStyle = "#cc8844";
+      ctx.fill();
+
+      // Labels
+      ctx.fillStyle = "#000";
+      ctx.font = "14px sans-serif";
+      ctx.fillText("Sea level (stronger R)", centerX1 - 60, centerY - 10);
+      ctx.fillText("Mountain (weaker R)", centerX2 - 60, centerY - 10);
+
+      requestAnimationFrame(drawPendulums);
+    }
+
+    drawPendulums();
+  </script>
+  <p><small>Both pendulums have equal length, but swing at different speeds due to local field tension in R(x).</small></p>
+</section>
+
+<section>
+  <h3>📊 Comparison</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical Physics</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>\( T = 2\pi \sqrt{L/g} \)</td>
+      <td>\( T = 2\pi \sqrt{L/\Phi(x)} \)</td>
+    </tr>
+    <tr>
+      <td>Origin of g</td>
+      <td>Acceleration from gravity</td>
+      <td>Modal field density \( \Phi(x) \)</td>
+    </tr>
+    <tr>
+      <td>Field variation</td>
+      <td>Empirical adjustment</td>
+      <td>Natural from R(x)-structure</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Mass pulled by force</td>
+      <td>Oscillator in field coherence</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation</h3>
+  <p>
+    In Harmonia, a pendulum is not being “pulled” by gravity — it is oscillating in a <strong>local modal potential well</strong>.
+    The depth of that well — and thus the oscillation frequency — depends on how compressed the field R(x) is at that location.
+  </p>
+  <p>
+    On a mountain, the field is slightly more relaxed (less compressed), so the modal tension is lower.
+    This results in a longer period. At sea level, field compression is higher, and the pendulum swings faster.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In Newtonian physics, the value of g is taken as a given — a constant (or locally varying) acceleration.
+    But this doesn't explain why pendulums swing at all, or why g varies the way it does.
+  </p>
+  <p>
+    Harmonia views all motion as modal interaction. The pendulum swings because the field tension at its location
+    supports a stable oscillatory node. As the pendulum moves, it exchanges modal energy with the field.
+  </p>
+  <p>
+    When R(x) is denser — near the Earth’s surface — the restoring force is stronger. Higher up, it’s weaker.
+    This changes not just “g”, but the underlying modal configuration of the system.
+  </p>
+</details>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Pendulum Period Variation</li>
+    <li><strong>Model:</strong> Modal Oscillator in Gradient Field</li>
+    <li><strong>Operator:</strong> O108 (Modal Period Response)</li>
+    <li><strong>Reference Modules:</strong> H131–H134 (Mechanics), O101–O110</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

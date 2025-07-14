@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🚀 Escape Velocity and Resonant Field Threshold</h2>
+  <p><strong>Category:</strong> Gravitation / Field Tension and Threshold</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches classical escape velocity, with field-based interpretation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In classical mechanics, escape velocity is the minimum speed required to escape a gravitational field without further propulsion.
+    For a mass M and radius r:
+  </p>
+  <pre>
+v_esc = √(2GM / r)
+  </pre>
+  <p>
+    This formula is derived from energy conservation: total mechanical energy equals zero at infinity.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Resonance Threshold in R(x))</h3>
+  <p>
+    In Harmonia, escape velocity marks the threshold where the local R(x) field no longer sustains coherent coupling with the object.
+    It is not an energy barrier in space, but a phase transition in the relationship between the object’s internal field and the background.
+  </p>
+  <p>
+    Below the threshold, the object is phase-locked into a harmonic structure. Once the resonance breaks, the object detaches from the system’s coherence well.
+    The velocity required is the same, but the mechanism is a disruption in harmonic containment — not a “push” against force.
+  </p>
+</section>
+
+<section>
+  <h3>📐 Calculate Escape Velocity</h3>
+  <label>Mass M (kg):</label>
+  <input type="number" id="mass" value="5.972e24">
+  <label>Radius r (m):</label>
+  <input type="number" id="radius" value="6.371e6">
+  <button onclick="computeEsc()">Compute</button>
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function computeEsc() {
+      const G = 6.67430e-11;
+      const M = parseFloat(document.getElementById("mass").value);
+      const r = parseFloat(document.getElementById("radius").value);
+      if (isNaN(M) || isNaN(r) || M <= 0 || r <= 0) {
+        document.getElementById("output").innerText = "Please enter valid values.";
+        return;
+      }
+      const v = Math.sqrt(2 * G * M / r);
+      document.getElementById("output").innerText = `Escape velocity v = ${v.toFixed(2)} m/s`;
+    }
+  </script>
+
+  <p><small>Earth: M = 5.972e24 kg, r = 6.371e6 m → v ≈ 11,186 m/s</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Escape velocity is a fundamental prediction for celestial mechanics and spaceflight. Any valid model of gravity must recover this threshold.
+  </p>
+  <p>
+    Harmonia does — but it explains the threshold not as a function of mechanical energy, but of field resonance breakdown.
+    It links motion, energy, and field coherence into a single phase-structural interpretation.
+    This allows escape velocity to be understood not just as a speed, but as the field-specific threshold where spatial resonance fails to contain motion.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In Newtonian physics, escape velocity is the minimum kinetic energy required to reach infinity.
+    In Harmonia, the same threshold marks the limit of phase coherence between the object and the R(x) field.
+  </p>
+  <p>
+    <em>Metaphor:</em> Imagine a ball in a vibrating bowl. While its motion stays synchronized with the vibration, it resonates inside.
+    If its motion exceeds the field's retention coherence, it escapes — not by breaking through, but by falling out of phase with the field that once contained it.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical (Newton)</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Expression</td>
+      <td>v = √(2GM / r)</td>
+      <td>Approximate (low field)</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Energy required to reach ∞</td>
+      <td>Escape from geodesic well</td>
+      <td>Break from resonance field</td>
+    </tr>
+    <tr>
+      <td>Ontological meaning</td>
+      <td>Balance of kinetic and potential energy</td>
+      <td>Null path at boundary</td>
+      <td>Collapse of field containment</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Velocity to escape gravity</td>
+      <td>Limit of bound motion</td>
+      <td>Threshold of field coherence</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Escape Velocity and Resonant Field Threshold</li>
+    <li><strong>Model:</strong> Threshold Collapse of Field Lock</li>
+    <li><strong>Operator:</strong> O104 (Field Escape Gradient)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

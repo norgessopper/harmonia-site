@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌀 Frame Dragging (Rotational Field Coupling)</h2>
+  <p><strong>Category:</strong> Gravitation / Rotational Resonance</p>
+  <p><strong>Prediction Match:</strong> ✅ Same angular drift as GR, explained via field coherence</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In general relativity, a rotating mass causes the spacetime around it to “twist”. This effect, called
+    frame dragging or the Lense–Thirring effect, means that nearby gyroscopes or orbiting objects experience a
+    slow precession of their local inertial frame.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (General Relativity)</h3>
+  <pre>
+Ω_drag = (2GJ) / (c² r³)
+  </pre>
+  <p>
+    Where:
+  </p>
+  <ul>
+    <li><code>G</code> = gravitational constant</li>
+    <li><code>J</code> = angular momentum of the rotating body</li>
+    <li><code>r</code> = distance from center</li>
+    <li><code>c</code> = speed of light</li>
+  </ul>
+  <p>
+    This has been confirmed by experiments such as Gravity Probe B and satellite tracking missions.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Asymmetric Field Coherence)</h3>
+  <p>
+    In Harmonia, a rotating mass induces a helical modulation in the surrounding R(x) field.
+    This breaks the radial symmetry and creates a gradient of coherence — effectively “dragging” the field orientation
+    in the direction of rotation.
+  </p>
+  <p>
+    Test particles and gyroscopes embedded in this field experience a drift in alignment not because spacetime is curved,
+    but because their internal resonance modes realign with the twisted coherence structure.
+    You can think of the field lines as gradually winding up around the mass, like threads on a spinning spool —
+    test particles follow the twist not by force, but by realignment with the field’s harmonic flow.
+  </p>
+  <p>
+    The result is numerically identical to GR.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Calculate Frame Dragging Rate</h3>
+  <label>Mass (kg):</label>
+  <input type="number" id="mass" value="5.972e24">
+  <label>Radius of rotation (m):</label>
+  <input type="number" id="radius" value="6.371e6">
+  <label>Rotation rate (rad/s):</label>
+  <input type="number" id="omega" value="7.2921e-5">
+  <label>Distance from center (m):</label>
+  <input type="number" id="r" value="7e6">
+  <button onclick="calcDrag()">Calculate Ω_drag</button>
+
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcDrag() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const M = parseFloat(document.getElementById("mass").value);
+      const R = parseFloat(document.getElementById("radius").value);
+      const omega = parseFloat(document.getElementById("omega").value);
+      const r = parseFloat(document.getElementById("r").value);
+
+      if ([M, R, omega, r].some(x => isNaN(x) || x <= 0)) {
+        document.getElementById("output").innerText = "Please enter valid values.";
+        return;
+      }
+
+      const J = (2 / 5) * M * R * R * omega;
+      const drag = (2 * G * J) / (c ** 2 * r ** 3);
+      document.getElementById("output").innerText =
+        `Frame dragging rate: Ω_drag = ${drag.toExponential(6)} rad/s`;
+    }
+  </script>
+
+  <p><small>Earth’s expected frame dragging near low orbit: ≈ 3 × 10⁻¹⁴ rad/s</small></p>
+  <p><small>This calculation uses a uniform sphere approximation for angular momentum:
+  <code>J = (2/5) M R² ω</code></small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Frame dragging is one of the most subtle yet profound predictions of relativity — it shows that not just mass,
+    but mass-in-motion affects the structure of space. Any theory of gravity must reproduce this effect.
+  </p>
+  <p>
+    Harmonia explains it not through geometric twisting, but through rotational asymmetry in the field coherence.
+    The dragging is not of spacetime, but of harmonic alignment in the R(x) field.
+  </p>
+  <p>
+    This not only matches observation, but integrates rotation into the broader field framework
+    without needing coordinate curvature or metric distortion — only a coherent field structure that encodes rotation.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>Ω = 2GJ / c²r³</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Spacetime twist</td>
+      <td>Rotational asymmetry in R(x)</td>
+    </tr>
+    <tr>
+      <td>Gyroscope drift</td>
+      <td>Due to curved coordinates</td>
+      <td>Due to resonance re-alignment</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Geometric deformation</td>
+      <td>Field coherence distortion</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Frame Dragging (Lense–Thirring Effect)</li>
+    <li><strong>Model:</strong> Rotational Asymmetry in R(x)</li>
+    <li><strong>Operator:</strong> O105 (Rotational Field Gradient)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

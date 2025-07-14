@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🕳️ Photon Escape Energy from a Black Hole</h2>
+  <p><strong>Category:</strong> Gravitation / Field Collapse</p>
+  <p><strong>Prediction Match:</strong> ✅ Same Schwarzschild radius, no singularity</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    According to general relativity, if an object is compressed within a certain critical radius, no signal — not even light —
+    can escape. This defines a black hole. The critical radius is the Schwarzschild radius:
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (General Relativity)</h3>
+  <pre>
+rₛ = 2GM / c²
+  </pre>
+  <p>
+    This radius defines the event horizon. At or below this radius, spacetime is so curved that all light cones tip inward —
+    nothing can escape.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Resonant Field Collapse)</h3>
+  <p>
+    Harmonia gives the same critical radius — but interprets it differently. There is no “hole” in space.
+    Instead, the R(x) field becomes maximally compressed, and the outward resonance modes vanish.
+    A photon cannot escape not because spacetime curves, but because the field loses its ability to sustain
+    outward-traveling resonant modes. There is no path, because there's no oscillatory channel left.
+  </p>
+  <p>
+    The Schwarzschild radius still marks a phase boundary: a point of total inward resonance collapse.
+    But there is no geometric singularity — no infinite curvature, no breakdown of physics — just a transition
+    beyond which resonance cannot stabilize.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Calculate Schwarzschild Radius</h3>
+  <label>Mass (kg):</label>
+  <input type="number" id="mass" value="1.9885e30">
+  <button onclick="calcRs()">Calculate rₛ</button>
+
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcRs() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const M = parseFloat(document.getElementById("mass").value);
+
+      if (isNaN(M) || M <= 0) {
+        document.getElementById("output").innerText = "Please enter a valid mass.";
+        return;
+      }
+
+      const rs = (2 * G * M) / (c ** 2);
+      document.getElementById("output").innerText =
+        `Schwarzschild radius: rₛ = ${rs.toExponential(6)} m`;
+    }
+  </script>
+
+  <p><small>Try values for:</small></p>
+  <ul>
+    <li><strong>Sun:</strong> M = 1.9885e30 kg → rₛ ≈ 2.95 km</li>
+    <li><strong>Earth:</strong> M = 5.972e24 kg → rₛ ≈ 8.87 mm</li>
+    <li><strong>Neutron star:</strong> M = 2.1e30 kg → rₛ ≈ 3.10 km</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    The Schwarzschild radius is one of the most iconic results in physics. Any viable theory of gravity must reproduce it.
+    Harmonia does — but without introducing singularities or geometric infinities.
+  </p>
+  <p>
+    Instead of “holes in space,” Harmonia treats black holes as boundary states of maximal field compression.
+    Signals cannot escape because no coherent outward resonance remains.
+  </p>
+  <p>
+    Harmonia provides the same predictions without needing infinities or discontinuities —
+    making it compatible with quantum field coherence and offering a unified physical ontology.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Escape radius</td>
+      <td>rₛ = 2GM / c²</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Escape mechanism</td>
+      <td>Spacetime curvature</td>
+      <td>Loss of outward resonance</td>
+    </tr>
+    <tr>
+      <td>Singularity</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Physical interpretation</td>
+      <td>Geometric collapse</td>
+      <td>Resonant field boundary</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Black Hole Escape Energy</li>
+    <li><strong>Model:</strong> Field Collapse and Resonance Horizon</li>
+    <li><strong>Operator:</strong> O104 (Radial Resonance Termination)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

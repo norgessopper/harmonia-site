@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Electric Field – Harmonia Tests</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>⚡ Electric Field of a Point Charge</h2>
+  <p><strong>Category:</strong> Electromagnetism / Field Structure</p>
+  <p><strong>Prediction Match:</strong> ✅ Same measurable result, improved behavior at short distances</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    The electric field of a point charge is one of the most fundamental models in physics.
+    Classical theory describes it as diverging with <code>1/r²</code>, resulting in an infinite field at the origin.
+    Harmonia reproduces the same behavior in the measurable range, but modifies the short-distance structure to eliminate singularities.
+  </p>
+  <p>
+    This allows Harmonia to reproduce all experimental electric field measurements — while remaining finite in theoretical extremes.
+  </p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Many equations in physics break down near singularities — including point charges and black holes.
+    Harmonia’s approach models all fields as smooth and resonance-based, avoiding infinities by construction.
+    This allows for better predictions in extreme regimes while remaining consistent with experiment.
+  </p>
+  <p>
+    In particle physics, the infinite self-energy of point charges is a well-known divergence problem. Harmonia avoids this entirely.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (Coulomb’s Law)</h3>
+  <pre>
+E(r) = (1 / 4πε₀) · q / r²
+  </pre>
+  <p>
+    This formula diverges as <code>r → 0</code>, leading to infinite energy densities that cannot be physically realized.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Resonant Field)</h3>
+  <p>
+    In Harmonia, the electric field is modeled as a distributed resonance field, where:
+  </p>
+  <pre>
+E(r) = (1 / 4πε₀) · (q / r²) · R_field(r)
+
+R_field(r) = 1 − e^(−r / r₀)
+  </pre>
+  <p>
+    Near the origin, the exponential suppresses the divergence, while at larger distances it approaches 1 —
+    reproducing the classical <code>1/r²</code> behavior.
+  </p>
+  <p>
+    Here, <code>r₀</code> is a coherence length — a minimal structural scale of the field.
+    It determines how sharply the field is suppressed near the origin and reflects the inner structure of the collapsed field node.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Adjust Charge and View Field Strength</h3>
+  <label>Charge (q): <span id="chargeValue">1</span> C</label><br>
+  <input type="range" id="chargeSlider" min="0.1" max="10" step="0.1" value="1">
+  <canvas id="fieldChart" width="600" height="400"></canvas>
+  <p><small>Logarithmic Y-axis. Field plotted from <code>r = 0.01</code> to <code>r = 10</code> meters.</small></p>
+
+  <script>
+    const ctx = document.getElementById("fieldChart").getContext("2d");
+    const slider = document.getElementById("chargeSlider");
+    const label = document.getElementById("chargeValue");
+
+    const ε0 = 8.854e-12;
+    const r0 = 0.1;
+
+    function fieldClassical(q, r) {
+      return (1 / (4 * Math.PI * ε0)) * q / (r ** 2);
+    }
+
+    function fieldHarmonia(q, r) {
+      const R = 1 - Math.exp(-r / r0);
+      return (1 / (4 * Math.PI * ε0)) * q / (r ** 2) * R;
+    }
+
+    function generateFieldData(q) {
+      let classical = [], harmonia = [];
+      for (let i = 1; i <= 100; i++) {
+        const r = 0.01 + (i / 10); // from 0.01 to 10
+        classical.push({ x: r, y: fieldClassical(q, r) });
+        harmonia.push({ x: r, y: fieldHarmonia(q, r) });
+      }
+      return { classical, harmonia };
+    }
+
+    function updateChart(q) {
+      label.textContent = q.toFixed(1);
+      const data = generateFieldData(q);
+      chart.data.datasets[0].data = data.classical;
+      chart.data.datasets[1].data = data.harmonia;
+      chart.update();
+    }
+
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            label: 'Classical',
+            borderColor: '#999',
+            data: [],
+            pointRadius: 0,
+            fill: false,
+            tension: 0.2
+          },
+          {
+            label: 'Harmonia',
+            borderColor: '#0a4d2f',
+            data: [],
+            pointRadius: 0,
+            fill: false,
+            tension: 0.2
+          }
+        ]
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'linear',
+            title: { display: true, text: 'Distance r (m)' }
+          },
+          y: {
+            type: 'logarithmic',
+            title: { display: true, text: 'Electric Field Strength (V/m)' },
+            min: 1e2,
+            max: 1e12,
+            ticks: {
+              callback: (v) => Number(v).toExponential()
+            }
+          }
+        }
+      }
+    });
+
+    updateChart(1);
+    slider.addEventListener('input', () => {
+      updateChart(parseFloat(slider.value));
+    });
+  </script>
+</section>
+
+<section>
+  <h3>Why No Singularity in Harmonia?</h3>
+  <p>
+    Classical theory treats a point charge as an object of zero radius and infinite energy density.
+    Harmonia instead treats all particles as collapsed regions of a continuous field.
+    There is no "point" object — only a field structure with local peak intensity.
+  </p>
+  <p>
+    This removes the singularity and allows electric fields to remain finite at all distances —
+    while still matching classical predictions where it matters.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Behavior at r → 0</td>
+      <td>Infinite</td>
+      <td>Finite</td>
+    </tr>
+    <tr>
+      <td>Felt structure</td>
+      <td>Point particle</td>
+      <td>Field resonance node</td>
+    </tr>
+    <tr>
+      <td>Numerical match (far field)</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Singularity</td>
+      <td>❌</td>
+      <td>✅ Removed</td>
+    </tr>
+    <tr>
+      <td>Total energy at r = 0</td>
+      <td>∞</td>
+      <td>Finite</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Electric Field of a Point Charge</li>
+    <li><strong>Model:</strong> R(x) Resonant Charge Collapse</li>
+    <li><strong>Operator:</strong> O101 (Field Collapse Modulation)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

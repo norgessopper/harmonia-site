@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌞 Circadian Rhythm as Modal Phase Lock in R(x)</h2>
+  <p><strong>Category:</strong> Chronobiology / Modal Entrainment</p>
+  <p><strong>Prediction Match:</strong> ✅ Explains 24-hour biological cycles as resonance-locking with solar coherence in R(x)</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    Every living organism on Earth follows a rhythm — a roughly 24-hour cycle of activity and rest.
+    This is known as the <strong>circadian rhythm</strong>. It governs sleep, hormone release, temperature, cognition, and more.
+  </p>
+  <p>
+    Traditionally, circadian rhythms are explained by internal clocks — feedback loops of gene expression that regulate timing.
+    But these clocks are not isolated. They are entrained by the sun. The question is:
+    <strong>how does the body know what time it is?</strong>
+  </p>
+  <p>
+    Harmonia offers a deeper explanation: biological rhythms are not just internal loops — they are <em>phase-locked oscillations</em>
+    coupled to the modal coherence of the surrounding field R(x), which itself is modulated by the sun.
+  </p>
+</section>
+
+<section>
+  <h3>🌀 Phase-Locking Simulation</h3>
+  <p>
+    Below is a simulation showing a biological oscillator trying to maintain phase with an external solar rhythm.
+    When aligned, the system is coherent. When phase is lost (e.g., by jetlag), it takes time to re-lock.
+  </p>
+  <canvas id="circadianSim" width="600" height="250" style="background:#fdfdf5; border-radius:12px;"></canvas>
+  <script>
+    const canvas = document.getElementById("circadianSim");
+    const ctx = canvas.getContext("2d");
+
+    let time = 0;
+    let phaseOffset = 0;
+    let drifting = false;
+    let locked = true;
+    let driftPhase = 0;
+
+    function drawCircadian() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      time += 0.04;
+
+      // Solar rhythm (yellow)
+      ctx.beginPath();
+      for (let x = 0; x < canvas.width; x++) {
+        const y = 125 - 50 * Math.sin((x + time * 60) * 0.01);
+        ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = "#ffaa00";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Biological rhythm (green/red)
+      ctx.beginPath();
+      for (let x = 0; x < canvas.width; x++) {
+        const drift = drifting ? driftPhase : 0;
+        const y = 125 - 50 * Math.sin((x + time * 60 + phaseOffset + drift) * 0.01);
+        ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = locked ? "#229966" : "#cc4444";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      if (drifting && driftPhase > 0) {
+        driftPhase -= 0.4;
+        if (driftPhase <= 0) {
+          driftPhase = 0;
+          drifting = false;
+          locked = true;
+        }
+      }
+
+      requestAnimationFrame(drawCircadian);
+    }
+
+    drawCircadian();
+
+    canvas.addEventListener("click", () => {
+      if (!drifting) {
+        drifting = true;
+        locked = false;
+        driftPhase = 150; // simulate phase shift
+      }
+    });
+  </script>
+  <p><small>Click the graph to simulate jetlag. The red curve drifts out of phase, then gradually re-synchronizes with the solar rhythm.</small></p>
+</section>
+
+<section>
+  <h3>📊 Comparison</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical Model</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Timing Mechanism</td>
+      <td>Genetic feedback loops</td>
+      <td>Modal phase oscillator in R(x)</td>
+    </tr>
+    <tr>
+      <td>Synchronization</td>
+      <td>Via light/dark cues</td>
+      <td>Via resonance locking</td>
+    </tr>
+    <tr>
+      <td>Jetlag</td>
+      <td>Reset of molecular clocks</td>
+      <td>Phase drift from solar field</td>
+    </tr>
+    <tr>
+      <td>Core Ontology</td>
+      <td>Biochemical circuits</td>
+      <td>Field-based entrainment</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation</h3>
+  <p>
+    The sun doesn’t just emit light — it structures the surrounding resonance field.
+    Biological systems like the human brain and liver are <em>modal oscillators</em> within that field.
+    Their rhythms lock to the solar field’s phase pattern.
+  </p>
+  <p>
+    When that alignment breaks — due to travel, artificial lighting, or disruption — the system enters <strong>phase drift</strong>,
+    and coherence is lost. Harmonia models this not as a chemical delay, but as a field desynchronization.
+  </p>
+  <p>
+    Recovery of rhythm is the process of <em>modal re-locking</em> — a return to coherent phase in the solar-coupled field R(x).
+  </p>
+</section>
+<section>
+  <h3>📈 Real-World Confirmation</h3>
+  <p>
+    Studies show that when a person travels across time zones, the circadian rhythm takes time to re-align with the new environment.
+    The re-locking process typically happens at a rate of <strong>about 1 hour per day</strong>.
+  </p>
+  <p>
+    For example, flying from New York to Paris (6-hour difference) often results in 5–7 days of partial phase mismatch,
+    where sleep, mood, digestion, and cognition are affected.
+  </p>
+  <p>
+    Harmonia interprets this re-alignment as a process of <em>modal convergence</em>: the biological field oscillator gradually 
+    re-locks to the new phase structure in R(x), which is governed by solar coherence at that location.
+  </p>
+</section>
+
+<section>
+  <h3>🌐 Biological Mechanisms and Field Coupling</h3>
+  <p>
+    The central circadian clock in mammals is located in the <strong>suprachiasmatic nucleus (SCN)</strong> of the hypothalamus.
+    This small region synchronizes internal rhythms by receiving light signals through the retina.
+  </p>
+  <p>
+    Melatonin, often called the “darkness hormone,” is released by the pineal gland in response to decreasing light.
+    It signals the body to prepare for sleep and is tightly linked to circadian phase.
+  </p>
+  <p>
+    In Harmonia, these mechanisms are not just chemical. The SCN and pineal gland function as <strong>resonant receivers</strong>,
+    detecting changes in the modal phase structure of R(x) induced by sunlight.
+    Thus, entrainment is not only about photons — it is about <em>modal synchronization</em> with the solar field.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    Circadian rhythms are maintained by internal oscillators, such as the suprachiasmatic nucleus (SCN) in the hypothalamus.
+    These clocks rely on gene expression cycles. But their timing is fragile.
+  </p>
+  <p>
+    Harmonia explains the stability of rhythm not as feedback stabilization, but as a result of phase alignment with the environment.
+    The sun’s presence modulates the coherence structure of R(x), which acts as a synchronizing field.
+  </p>
+  <p>
+    Just as pendulums placed on the same beam begin to swing in phase, biological systems align via the modal pathways of R(x).
+  </p>
+</details>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Circadian Phase Lock</li>
+    <li><strong>Model:</strong> Modal Entrainment via Field Phase</li>
+    <li><strong>Operator:</strong> O241 (Temporal Coherence Lock)</li>
+    <li><strong>Reference Modules:</strong> H161–H165 (Biology), H200–H203 (Time in R(x))</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

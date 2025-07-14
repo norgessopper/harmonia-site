@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>⚛️ Quantum Tunneling as Field Phase Migration</h2>
+  <p><strong>Category:</strong> Quantum Mechanics / Field-Based Transition</p>
+  <p><strong>Prediction Match:</strong> ✅ Reproduces quantum tunneling probabilities, with field-coherence interpretation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In standard quantum mechanics, quantum tunneling occurs when a particle crosses a potential barrier it classically cannot overcome.
+    The particle’s wavefunction penetrates into the barrier and decays exponentially, allowing a non-zero transmission probability.
+  </p>
+  <p>
+    For a 1D rectangular barrier:
+  </p>
+  <pre>
+T ≈ exp[−2κL], where κ = √(2m(V − E)) / ℏ
+  </pre>
+  <p>
+    Where <code>V</code> is the barrier height, <code>E</code> the particle energy, and <code>L</code> the barrier width.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Phase-Coherence Migration)</h3>
+  <p>
+    In Harmonia, tunneling is not the probabilistic behavior of a particle, but a shift in coherence alignment within the R(x) field.
+    The particle is a localized resonance node. If the coherence gradient across a barrier supports phase migration,
+    the resonance structure realigns beyond the barrier as coherence is transferred across the gradient — even without classical energy.
+  </p>
+  <p>
+    The exponential decay arises not from imaginary solutions to Schrödinger’s equation, but from progressive loss of phase-locking inside regions of low R(x) compatibility.
+  </p>
+</section>
+
+<section>
+  <h3>📐 Estimate Tunneling Probability</h3>
+  <label>Particle mass m (kg):</label>
+  <input type="number" id="m" value="9.11e-31">
+  <label>Barrier height V (eV):</label>
+  <input type="number" id="V" value="5">
+  <label>Particle energy E (eV):</label>
+  <input type="number" id="E" value="2">
+  <label>Barrier width L (m):</label>
+  <input type="number" id="L" value="1e-10">
+  <button onclick="calcTunnel()">Compute</button>
+  <div id="tunnelOut" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcTunnel() {
+      const m = parseFloat(document.getElementById("m").value);
+      const V = parseFloat(document.getElementById("V").value);
+      const E = parseFloat(document.getElementById("E").value);
+      const L = parseFloat(document.getElementById("L").value);
+      if (E >= V || m <= 0 || L <= 0 || isNaN(V) || isNaN(E) || isNaN(L)) {
+        document.getElementById("tunnelOut").innerText = "E must be less than V, and inputs must be positive.";
+        return;
+      }
+      const eVtoJ = 1.60218e-19;
+      const hbar = 1.05457e-34;
+      const κ = Math.sqrt(2 * m * (V - E) * eVtoJ) / hbar;
+      const T = Math.exp(-2 * κ * L);
+      document.getElementById("tunnelOut").innerText = `Estimated tunneling probability: T ≈ ${T.toExponential(3)}`;
+    }
+  </script>
+
+  <p><small>Example: V = 5 eV, E = 2 eV, L = 1 Å → T ≈ 1.70 × 10⁻¹</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Tunneling is fundamental to scanning tunneling microscopes, nuclear fusion, and biochemical reactions.
+    Yet standard quantum mechanics offers no physical picture — only mathematical formalism.
+  </p>
+  <p>
+    Harmonia gives a physically intuitive interpretation: tunneling is field-phase migration driven by coherence,
+    not probabilistic “jumping”. This turns an abstract formalism into a real physical transition governed by the structure of R(x).
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In standard QM, the particle has a finite chance of being found beyond the barrier due to wavefunction continuity.
+    But there’s no explanation for “how” the particle moves across — or what mechanism guides it.
+  </p>
+  <p>
+    Harmonia suggests that tunneling occurs when the R(x) coherence gradient allows a continuous phase transfer from one side to the other.
+    The barrier region lacks enough harmonic compatibility to support a strong resonance, so the probability falls off —
+    not due to mystery, but due to local field mismatch.
+  </p>
+  <p>
+    <em>Metaphor:</em> Imagine striking a note across a wall of foam. If the foam is too thick, the vibration fades.
+    But if the structure beyond is harmonically aligned, the sound may still resonate on the other side.
+    That is tunneling in Harmonia.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Quantum Mechanics</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Wavefunction penetration</td>
+      <td>Resonance-phase migration in R(x)</td>
+    </tr>
+    <tr>
+      <td>Exponential decay</td>
+      <td>Imaginary wavevector in barrier</td>
+      <td>Loss of phase-locking through incoherent zone</td>
+    </tr>
+    <tr>
+      <td>Transmission probability</td>
+      <td>T ≈ exp(−2κL)</td>
+      <td>Same, but coherence-derived</td>
+    </tr>
+    <tr>
+      <td>Ontology</td>
+      <td>Probabilistic particle</td>
+      <td>Phase-locked resonance node</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Quantum Tunneling as Field Phase Migration</li>
+    <li><strong>Model:</strong> Phase-Coherent Barrier Transition</li>
+    <li><strong>Operator:</strong> O111 (Field Compatibility Gradient)</li>
+    <li><strong>Reference Modules:</strong> H206–H210, O111–O115</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

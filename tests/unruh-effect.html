@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🔥 Unruh Effect (Thermal Radiation from Acceleration)</h2>
+  <p><strong>Category:</strong> Quantum Field Theory / Field Resonance</p>
+  <p><strong>Prediction Match:</strong> ✅ Same temperature formula, with field-based explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    The Unruh effect predicts that an observer undergoing constant acceleration in vacuum will perceive thermal radiation —
+    even though an inertial observer sees none. This shows a deep connection between acceleration, quantum fields, and temperature.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (Unruh 1976)</h3>
+  <pre>
+T = ℏ a / (2π c k_B)
+  </pre>
+  <p>
+    Where:
+  </p>
+  <ul>
+    <li><code>a</code> = acceleration (m/s²)</li>
+    <li><code>ℏ</code> = reduced Planck constant</li>
+    <li><code>c</code> = speed of light</li>
+    <li><code>k_B</code> = Boltzmann constant</li>
+  </ul>
+  <p>
+    Even very large accelerations yield tiny temperatures, which is why this effect is extremely difficult to detect.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Field Resonance Disruption)</h3>
+  <p>
+    In Harmonia, an accelerated object perturbs the local coherence of the R(x) field. The faster it accelerates,
+    the more it disrupts the symmetry of the surrounding field — resulting in spontaneous local activation
+    of thermal resonance modes.
+  </p>
+  <p>
+    What quantum field theory interprets as virtual particles becoming real, Harmonia sees as field energy redistributing
+    due to incoherent compression in R(x). The same formula emerges, but without invoking observer-dependent reality.
+  </p>
+  <p>
+    This redistribution is not imaginary: it represents a shift in the harmonic balance of the field —
+    a physical transfer of energy from order to thermal fluctuation.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Calculate Unruh Temperature</h3>
+  <label>Acceleration (m/s²):</label>
+  <input type="number" id="acceleration" value="1e20">
+  <button onclick="calcUnruh()">Calculate Temperature</button>
+
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcUnruh() {
+      const hbar = 1.054571817e-34;
+      const c = 299792458;
+      const kB = 1.380649e-23;
+      const a = parseFloat(document.getElementById("acceleration").value);
+
+      if (isNaN(a) || a <= 0) {
+        document.getElementById("output").innerText = "Please enter a valid positive acceleration.";
+        return;
+      }
+
+      const T = (hbar * a) / (2 * Math.PI * c * kB);
+      document.getElementById("output").innerText =
+        `Unruh temperature: T = ${T.toExponential(6)} K`;
+    }
+  </script>
+
+  <p><small>Example: An acceleration of <code>1e20 m/s²</code> gives ≈ 0.41 K (similar to CMB)</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    The Unruh effect links acceleration and temperature — suggesting that space itself has a thermal character depending
+    on how you move. While still not experimentally confirmed, it is widely accepted as theoretically sound.
+  </p>
+  <p>
+    In GR/QFT, this is often explained with a "Rindler horizon" — a theoretical surface beyond which the accelerated observer
+    cannot receive information. Harmonia avoids this abstraction by grounding the effect directly in field resonance structure.
+  </p>
+  <p>
+    Harmonia gives the same result, but provides a clearer mechanism:
+    field disruption induces harmonic instability, which activates thermal modes.
+    Heat is not from particles popping out of the vacuum — but from field resonance under stress.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Quantum Field Theory</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>T = ℏa / (2πck_B)</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Observer-dependent particle creation</td>
+      <td>Field coherence disruption</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Inertial vs accelerated vacuum</td>
+      <td>Stressed resonance field</td>
+    </tr>
+    <tr>
+      <td>Reality of particles</td>
+      <td>Frame-dependent</td>
+      <td>Emergent from field activation</td>
+    </tr>
+    <tr>
+      <td>Observer dependence</td>
+      <td>Yes</td>
+      <td>No — field is absolute</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Unruh Effect (Acceleration → Temperature)</li>
+    <li><strong>Model:</strong> Thermal Activation from Field Compression Gradient</li>
+    <li><strong>Operator:</strong> O115 (Coherence Disruption Temperature Induction)</li>
+    <li><strong>Reference Modules:</strong> H156–H160, O111–O115</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

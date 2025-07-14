@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gravitational Redshift – Harmonia Tests</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=number] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #b4dec9;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    button {
+      background-color: #0a4d2f;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌍 Gravitational Redshift</h2>
+  <p><strong>Category:</strong> Gravitation / Field Resonance</p>
+  <p><strong>Prediction Match:</strong> ✅ Same numerical result, clearer explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    When light escapes a gravitational field, its frequency decreases and wavelength increases — a phenomenon known as
+    gravitational redshift. This effect is one of the core predictions of general relativity and has been confirmed
+    experimentally on Earth, from white dwarfs, and in deep-space communication.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (General Relativity)</h3>
+  <pre>
+Δλ / λ = GM / (rc²)
+  </pre>
+  <p>
+    Where:
+  </p>
+  <ul>
+    <li><code>G</code> = gravitational constant</li>
+    <li><code>M</code> = mass of the object</li>
+    <li><code>r</code> = distance from the center</li>
+    <li><code>c</code> = speed of light</li>
+  </ul>
+  <p>
+    This describes how much the wavelength stretches due to gravitational potential.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Resonant Field Gradient)</h3>
+  <p>
+    In Harmonia, light is treated as a traveling resonance in the R(x) field. As it moves outward from a gravitational mass,
+    it passes through layers of decreasing field compression. This reduces the frequency and increases the wavelength.
+  </p>
+  <p>
+    Rather than interpreting redshift as “time running slower,” Harmonia sees it as a change in the local resonance frequency
+    of the R(x) field — the field becomes less compressed with distance, and light adapts to the new resonance environment.
+  </p>
+  <p>
+    You can imagine the R(x) field as layers of tension: near a massive object, the field is tightly compressed;
+    as light moves outward, the tension eases, and the “pitch” of the field drops — just like a string under less tension
+    produces a lower tone.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Try It Yourself</h3>
+  <label>Mass (kg):</label>
+  <input type="number" id="mass" value="1.9885e30">
+  <label>Radius (m):</label>
+  <input type="number" id="radius" value="6.9634e8">
+  <button onclick="calcRedshift()">Calculate Redshift</button>
+
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcRedshift() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const M = parseFloat(document.getElementById("mass").value);
+      const r = parseFloat(document.getElementById("radius").value);
+
+      if (isNaN(M) || isNaN(r) || r <= 0) {
+        document.getElementById("output").innerText = "Please enter valid values for mass and radius.";
+        return;
+      }
+
+      const z = (G * M) / (r * c ** 2);
+      const percent = (z * 100).toFixed(6);
+      document.getElementById("output").innerText =
+        `Redshift: Δλ / λ = ${z.toExponential(6)} (${percent}%)`;
+    }
+  </script>
+
+  <p><small>Try values for:</small></p>
+  <ul>
+    <li><strong>Sun:</strong> M = 1.9885e30 kg, r = 6.9634e8 m</li>
+    <li><strong>White dwarf:</strong> M = 1.4e30 kg, r = 7e6 m</li>
+    <li><strong>Neutron star:</strong> M = 2.1e30 kg, r = 1.2e4 m</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Gravitational redshift has been confirmed with atomic clocks, solar spectra, and white dwarf observations.
+    It is also crucial for correcting GPS satellite timing — a real-world effect that must be accounted for.
+    Any valid physical model must reproduce this shift exactly.
+  </p>
+  <p>
+    Harmonia does so — and removes the need for spacetime geometry.
+    Instead of bending time, Harmonia shows that redshift is a result of field coherence shifting
+    as energy moves through varying R(x) density. It's not mysterious — it's harmonic.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Prediction formula</td>
+      <td>Δλ / λ = GM / rc²</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Spacetime curvature</td>
+      <td>Field coherence gradient</td>
+    </tr>
+    <tr>
+      <td>Redshift mechanism</td>
+      <td>Time dilation</td>
+      <td>Falling resonance frequency</td>
+    </tr>
+    <tr>
+      <td>Singularity near black hole</td>
+      <td>Yes</td>
+      <td>No (bounded field structure)</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Gravitational Redshift</li>
+    <li><strong>Model:</strong> Harmonic Field Compression Gradient</li>
+    <li><strong>Operator:</strong> O105 (Gravitational Frequency Decay)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

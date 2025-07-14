@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌌 Cosmic Redshift via Resonant Phase Drift</h2>
+  <p><strong>Category:</strong> Cosmology / Field Coherence Degradation</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches observed redshift–distance relation, with field-based explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In standard cosmology, the redshift of light from distant galaxies is interpreted as a result of expanding spacetime.
+    This expansion stretches light’s wavelength as it propagates through space.
+  </p>
+  <p>
+    This leads to the Hubble relation:
+  </p>
+  <pre>
+z ≈ H₀ · d / c
+  </pre>
+  <p>
+    Where <code>z</code> is the redshift, <code>H₀</code> is the Hubble constant, and <code>d</code> is the comoving distance.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Phase Drift in R(x) Over Distance)</h3>
+  <p>
+    In Harmonia, redshift is not due to expanding space, but to gradual phase drift in the resonance field R(x) as light travels over vast distances.
+  </p>
+  <p>
+    The coherence between emitter and receiver degrades gradually due to subtle variations in R(x) field tension along the path.
+    The result is a cumulative phase lag that manifests as wavelength elongation — not from Doppler motion or geometry, but from coherence drift.
+  </p>
+  <p>
+    The resulting redshift follows the same relation:
+  </p>
+  <pre>
+z ≈ Δϕ / ϕ₀ ≈ H₀ · d / c
+  </pre>
+</section>
+
+<section>
+  <h3>📐 Estimate Redshift</h3>
+  <label>Hubble constant H₀ (km/s/Mpc):</label>
+  <input type="number" id="H0" value="70">
+  <label>Distance d (Mpc):</label>
+  <input type="number" id="D" value="1000">
+  <button onclick="computeRedshift()">Compute</button>
+  <div id="redshiftout" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function computeRedshift() {
+      const H0 = parseFloat(document.getElementById("H0").value);
+      const D = parseFloat(document.getElementById("D").value);
+      const c = 299792.458; // speed of light in km/s
+      if (isNaN(H0) || isNaN(D) || H0 <= 0 || D <= 0) {
+        document.getElementById("redshiftout").innerText = "Please enter valid values.";
+        return;
+      }
+      const z = (H0 * D) / c;
+      document.getElementById("redshiftout").innerText = `Estimated redshift z ≈ ${z.toFixed(5)}`;
+    }
+  </script>
+
+  <p><small>Example: d = 1000 Mpc, H₀ = 70 → z ≈ 0.2336</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Redshift is the cornerstone of modern cosmology. It defines cosmic expansion and distance scaling.
+    Any valid field theory must explain it precisely.
+  </p>
+  <p>
+    Harmonia reproduces the same observational redshift–distance relation,
+    but attributes the shift to distributed phase drift in the R(x) field — not global metric expansion.
+    This opens alternative paths to explaining the cosmic web, acceleration, and CMB structure.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In GR-based cosmology, redshift occurs because photons "stretch with space."
+    But this model requires empty space to change size — a concept with deep ontological challenges.
+  </p>
+  <p>
+    In Harmonia, space is not a stretching substance. Instead, light is a traveling resonance.
+    Over cosmic distances, even tiny variations in the background R(x) coherence accumulate, causing a slow and systematic phase slippage.
+    The received wavelength lengthens — not due to expansion, but from loss of synchronized harmonic tension.
+  </p>
+  <p>
+    <em>Metaphor:</em> Like a sound wave traveling through a foggy tunnel where the wall resonance changes slightly,
+    each oscillation arrives with a tiny phase slip. Over time, the wave "unwinds" and redshifts — not from expansion,
+    but from coherence fading. The wave itself never slows — only its synchronization with the field shifts.
+    Redshift becomes the fingerprint of lost harmonic continuity.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Standard Model (ΛCDM)</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Metric expansion of space</td>
+      <td>Phase drift in R(x) coherence</td>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>z ≈ H₀ d / c</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Wavelength stretched with universe</td>
+      <td>Loss of field phase synchrony over distance</td>
+    </tr>
+    <tr>
+      <td>Cosmic implications</td>
+      <td>Dark energy required</td>
+      <td>Emergent drift, no vacuum dynamics</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Cosmic Redshift via Resonant Phase Drift</li>
+    <li><strong>Model:</strong> Long-Range Phase Coherence Loss</li>
+    <li><strong>Operator:</strong> O108 (Distributed Resonance Decay)</li>
+    <li><strong>Reference Modules:</strong> H181–H185, O106–O110</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

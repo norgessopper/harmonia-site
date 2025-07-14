@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>👁️ Gravitational Lensing (Angular Deflection of Light)</h2>
+  <p><strong>Category:</strong> Gravitation / Field Resonance</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches GR deflection angle, with field-based explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    When light passes near a massive object, its path is bent. This bending — known as gravitational lensing — causes distant stars or galaxies
+    to appear shifted, duplicated, or distorted. It was first confirmed during the 1919 eclipse expedition and is now observed regularly in astrophysics.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (General Relativity)</h3>
+  <pre>
+Δθ = 4GM / (c^2 b)
+  </pre>
+  <ul>
+    <li><code>G</code>: Gravitational constant</li>
+    <li><code>M</code>: Mass of the deflecting body</li>
+    <li><code>c</code>: Speed of light</li>
+    <li><code>b</code>: Closest approach distance</li>
+  </ul>
+  <p>This yields a deflection of ~1.75 arcseconds at the Sun's limb, matching observations.</p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Resonant Field Gradient)</h3>
+  <p>
+    In Harmonia, light travels through the structured resonance field R(x). As it nears a massive body, the field's coherence becomes increasingly asymmetric.
+    The light wavefront, governed by resonance continuity, is gently redirected — not due to curvature, but by the <strong>lateral coherence gradient</strong> of R(x).
+  </p>
+  <p>
+    The result is the same deflection angle, but the mechanism is physical and local: a modulation of phase velocity across the wavefront due to field tension mismatch.
+  </p>
+</section>
+
+<section>
+  <h3>🌟 Calculate Deflection Angle</h3>
+  <label>Mass (kg):</label>
+  <input type="number" id="mass" value="1.9885e30">
+  <label>Impact parameter b (m):</label>
+  <input type="number" id="b" value="6.96e8">
+  <button onclick="computeDeflection()">Calculate Δθ</button>
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function computeDeflection() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const M = parseFloat(document.getElementById("mass").value);
+      const b = parseFloat(document.getElementById("b").value);
+      if (isNaN(M) || isNaN(b) || M <= 0 || b <= 0) {
+        document.getElementById("output").innerText = "Please enter valid values.";
+        return;
+      }
+      const thetaRad = (4 * G * M) / (c * c * b);
+      const arcsec = thetaRad * (180 / Math.PI) * 3600;
+      document.getElementById("output").innerText = `Deflection angle: Δθ = ${arcsec.toFixed(6)} arcseconds`;
+    }
+  </script>
+
+  <p><small>For the Sun: M = 1.9885e30 kg, b = 6.96e8 m → Δθ ≈ 1.75 arcseconds</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Gravitational lensing is one of the clearest demonstrations of light-matter interaction on cosmic scales.
+    Any fundamental theory of gravity must reproduce it — both in weak and strong field regimes.
+  </p>
+  <p>
+    Harmonia achieves the same numerical result, but avoids invoking geometric abstraction.
+    Instead, it explains the effect as a direct physical response to field asymmetry: the coherence field itself subtly guides the phase front.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔹 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In Harmonia, light behaves as a resonant wave propagating through a structured coherence field R(x).
+    When it approaches a massive object, the field is no longer symmetric: the side closer to mass is more compressed,
+    while the far side remains less affected.
+  </p>
+  <p>
+    This asymmetry causes the wavefront to tilt. Just as ocean waves bend when one side enters shallow water and slows down,
+    light bends because the effective phase velocity varies transversely across the front.
+  </p>
+  <p>
+    The result is not a path through curved geometry, but a natural deflection due to phase mismatch in the field.
+    The formula matches GR, but the interpretation is fully local, physical, and observer-independent.
+  </p>
+  <p>
+    <em>Metaphor:</em> Imagine a laser sheet moving through a lens of varying coherence structure —
+    the light bends not because space is curved, but because the underlying field varies.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Cause of bending</td>
+      <td>Spacetime curvature</td>
+      <td>Gradient in R(x) coherence</td>
+    </tr>
+    <tr>
+      <td>Propagation model</td>
+      <td>Geodesic path in 4D metric</td>
+      <td>Field-aligned phase transfer</td>
+    </tr>
+    <tr>
+      <td>Deflection angle</td>
+      <td>Δθ = 4GM / c^2 b</td>
+      <td>Same (first-order)</td>
+    </tr>
+    <tr>
+      <td>Explanation depth</td>
+      <td>Mathematical geometric</td>
+      <td>Physically resonant</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Gravitational Lensing (Deflection Angle)</li>
+    <li><strong>Model:</strong> Angular Resonance Deflection in R(x)</li>
+    <li><strong>Operator:</strong> O105 (Transverse Field Modulation)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

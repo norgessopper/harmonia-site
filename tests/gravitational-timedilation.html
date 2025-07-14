@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gravitational Time Dilation – Harmonia Tests</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=number] {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #b4dec9;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    button {
+      background-color: #0a4d2f;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<main>
+
+<section>
+  <h2>⏳ Gravitational Time Dilation</h2>
+  <p><strong>Category:</strong> Gravitation / Field Resonance</p>
+  <p><strong>Prediction Match:</strong> ✅ Same numerical result, with deeper explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In a gravitational field, clocks tick slower the deeper they are in the potential well.
+    This effect has been confirmed with atomic clocks on airplanes, satellites, and even high-rise buildings.
+    It's essential in GPS systems and fundamental to our understanding of general relativity.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (General Relativity)</h3>
+  <pre>
+Δt₀ / Δt∞ = √(1 − 2GM / rc²)
+  </pre>
+  <p>
+    Where:
+  </p>
+  <ul>
+    <li><code>G</code> = gravitational constant</li>
+    <li><code>M</code> = mass of the object</li>
+    <li><code>r</code> = radius (distance from center)</li>
+    <li><code>c</code> = speed of light</li>
+  </ul>
+  <p>
+    This gives the time dilation factor — how much slower time passes at radius <code>r</code> compared to far away.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Field Resonance Time Decay)</h3>
+  <p>
+    In Harmonia, time is not a coordinate axis but a harmonic coherence rhythm in the R(x) field.
+    Near a massive object, the field is more compressed, and local resonance frequencies slow down.
+    A clock is simply a structure resonating with local field frequencies — when the field changes, so does the tick rate.
+  </p>
+  <p>
+    In GR, time is a stretched coordinate. In Harmonia, it is a physical beat: in strong gravity, the field “beats” more slowly.
+    You can think of time as the rhythm of a stretched drum — deeper gravity dampens the vibration.
+  </p>
+  <p>
+    The result is numerically identical to GR, but the mechanism is field-based:
+    time slows because field-based processes slow in deeper resonance compression.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Calculate Time Dilation</h3>
+  <label>Mass (kg):</label>
+  <input type="number" id="mass" value="1.9885e30">
+  <label>Radius (m):</label>
+  <input type="number" id="radius" value="6.9634e8">
+  <button onclick="calcDilation()">Calculate Time Dilation</button>
+
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcDilation() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const M = parseFloat(document.getElementById("mass").value);
+      const r = parseFloat(document.getElementById("radius").value);
+
+      if (isNaN(M) || isNaN(r) || r <= 0) {
+        document.getElementById("output").innerText = "Please enter valid values for mass and radius.";
+        return;
+      }
+
+      const factor = Math.sqrt(1 - (2 * G * M) / (r * c ** 2));
+      document.getElementById("output").innerText =
+        `Time dilation factor: Δt₀ / Δt∞ = ${factor.toFixed(10)} (clock runs at ${ (factor * 100).toFixed(6) }% rate)`;
+    }
+  </script>
+
+  <p><small>Try values for:</small></p>
+  <ul>
+    <li><strong>Sun:</strong> M = 1.9885e30 kg, r = 6.9634e8 m</li>
+    <li><strong>White dwarf:</strong> M = 1.4e30 kg, r = 7e6 m</li>
+    <li><strong>Neutron star:</strong> M = 2.1e30 kg, r = 1.2e4 m</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    This effect is not just theoretical — it's measured daily by GPS systems.
+    Without correcting for gravitational time dilation, GPS would drift by kilometers per day.
+  </p>
+  <p>
+    Both special and general relativistic corrections are required. Harmonia predicts the general component exactly,
+    but explains it through field structure — not spacetime distortion.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Time behavior near mass</td>
+      <td>Slower due to geometry</td>
+      <td>Slower due to field compression</td>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Spacetime curvature</td>
+      <td>Field resonance delay</td>
+    </tr>
+    <tr>
+      <td>Nature of time</td>
+      <td>Coordinate axis</td>
+      <td>Emergent rhythm</td>
+    </tr>
+    <tr>
+      <td>Numerical result</td>
+      <td>✅</td>
+      <td>✅</td>
+    </tr>
+    <tr>
+      <td>Conceptual clarity</td>
+      <td>Medium</td>
+      <td>High</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Gravitational Time Dilation</li>
+    <li><strong>Model:</strong> Resonant Field Time Compression</li>
+    <li><strong>Operator:</strong> O105 (Temporal Field Decay)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

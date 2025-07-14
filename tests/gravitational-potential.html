@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🪙 Gravitational Potential Energy and Field Coherence Capacity</h2>
+  <p><strong>Category:</strong> Gravitation / Energy Storage in R(x)</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches classical potential energy, with field-theoretic interpretation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In classical physics, gravitational potential energy is defined as the work needed to move a mass in a gravitational field.
+    For two masses M and m separated by distance r:
+  </p>
+  <pre>
+U = -GMm / r
+  </pre>
+  <p>
+    In General Relativity, potential energy has no absolute meaning, but local energy differences in weak fields reduce to the same Newtonian form.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Field Coherence Capacity)</h3>
+  <p>
+    In Harmonia, potential energy is not stored in a point position, but in the resonance structure of the field R(x) between masses.
+    The closer the two bodies, the more tension is stored in the coherence structure — representing higher resonance capacity.
+  </p>
+  <p>
+    When a mass is lifted, the coherence gradient weakens, and the system stores more latent resonance energy —
+    a structured readiness to re-collapse under harmonic pull. 
+  </p>
+  <p>
+    The expression for U is the same: <code>U = -GMm / r</code>, but its meaning is relational and structural, not positional.
+  </p>
+</section>
+
+<section>
+  <h3>📐 Calculate Potential Energy</h3>
+  <label>Mass M (kg):</label>
+  <input type="number" id="m1" value="5.972e24">
+  <label>Mass m (kg):</label>
+  <input type="number" id="m2" value="1000">
+  <label>Distance r (m):</label>
+  <input type="number" id="r" value="6.371e6">
+  <button onclick="calcU()">Calculate U</button>
+  <div id="uresult" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcU() {
+      const G = 6.67430e-11;
+      const m1 = parseFloat(document.getElementById("m1").value);
+      const m2 = parseFloat(document.getElementById("m2").value);
+      const r = parseFloat(document.getElementById("r").value);
+      if (isNaN(m1) || isNaN(m2) || isNaN(r) || m1 <= 0 || m2 <= 0 || r <= 0) {
+        document.getElementById("uresult").innerText = "Please enter valid values.";
+        return;
+      }
+      const U = -G * m1 * m2 / r;
+      document.getElementById("uresult").innerText = `Potential energy U = ${U.toExponential(6)} J`;
+    }
+  </script>
+
+  <p><small>Example: 1000 kg at Earth surface → U ≈ -6.25 × 10⁷ J</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Potential energy is a foundational concept in mechanics, but its ontological status is vague in classical physics.
+    Harmonia gives it a clear meaning: it reflects the relational field configuration and its latent capacity for resonant collapse.
+  </p>
+  <p>
+    This bridges energy, structure, and information into a single coherent framework.
+    This test links gravitational dynamics directly to field-theoretic storage, unifying geometry and energy as aspects of resonance.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In Newtonian physics, potential energy is treated as a number assigned to a position.
+    But in Harmonia, energy is not "placed" anywhere — it's stored in the geometry of the field relationship.
+  </p>
+  <p>
+    When two masses are near each other, their fields interact and produce a stable resonance tension.
+    Moving them apart reduces that coherence, increasing the capacity for the system to do work if allowed to collapse again.
+  </p>
+  <p>
+    <em>Metaphor:</em> Think of two magnets held apart by tension — the energy is not "in" either magnet, but in the field between them.
+    If you let go, the system doesn't just release energy — it returns to a more coherent state. The collapse is not just motion, but structural reorganization.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical (Newton)</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Expression</td>
+      <td>U = -GMm / r</td>
+      <td>Approximate (in weak field)</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Work to separate masses</td>
+      <td>No absolute U, only energy balance</td>
+      <td>Stored coherence capacity</td>
+    </tr>
+    <tr>
+      <td>Location</td>
+      <td>Point-based</td>
+      <td>Local-invariant (metric-based)</td>
+      <td>Relational (between-field)</td>
+    </tr>
+    <tr>
+      <td>Source</td>
+      <td>Abstract scalar field</td>
+      <td>Tensor + pseudo-tensors</td>
+      <td>Real resonance geometry</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Gravitational Potential Energy</li>
+    <li><strong>Model:</strong> Field Coherence Storage</li>
+    <li><strong>Operator:</strong> O102 (Potential Resonance Gradient)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

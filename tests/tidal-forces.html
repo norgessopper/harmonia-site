@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌊 Tidal Forces and Field Gradient Coupling</h2>
+  <p><strong>Category:</strong> Gravitation / Differential Field Coherence</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches classical tidal force expression, with field-based explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In classical mechanics, tidal forces arise when the gravitational field varies over the extent of a body.
+    The side closer to the source feels a stronger pull, resulting in internal strain and elongation.
+  </p>
+  <p>
+    The approximate expression for tidal force across a body of radius <code>r</code> at distance <code>d</code> from a mass <code>M</code> is:
+  </p>
+  <pre>
+F_tidal ≈ 2GMmr / d³
+  </pre>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Differential Resonance Compression)</h3>
+  <p>
+    In Harmonia, tidal forces emerge from differential coupling to the R(x) field across an extended object.
+    The field’s coherence gradient causes slightly different phase-locking conditions for the near and far sides of the body.
+  </p>
+  <p>
+    This creates an internal gradient strain — not due to opposing forces, but due to a mismatch in local field compression.
+    The closer side is more deeply embedded in the R(x) well, while the farther side is less bound.
+  </p>
+  <p>
+    The result is localized deformation, without invoking net external forces. Harmonia reproduces the classical force expression in weak fields.
+  </p>
+</section>
+
+<section>
+  <h3>📐 Estimate Tidal Force</h3>
+  <label>Mass M (kg):</label>
+  <input type="number" id="M" value="7.347673e22">
+  <label>Mass m (kg):</label>
+  <input type="number" id="m" value="5.972e24">
+  <label>Body radius r (m):</label>
+  <input type="number" id="r" value="6.371e6">
+  <label>Distance d (m):</label>
+  <input type="number" id="d" value="3.844e8">
+  <button onclick="computeTide()">Compute</button>
+  <div id="tideout" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function computeTide() {
+      const G = 6.67430e-11;
+      const M = parseFloat(document.getElementById("M").value);
+      const m = parseFloat(document.getElementById("m").value);
+      const r = parseFloat(document.getElementById("r").value);
+      const d = parseFloat(document.getElementById("d").value);
+      if ([M, m, r, d].some(v => isNaN(v) || v <= 0)) {
+        document.getElementById("tideout").innerText = "Please enter valid values.";
+        return;
+      }
+      const F = 2 * G * M * m * r / Math.pow(d, 3);
+      document.getElementById("tideout").innerText = `Tidal force F ≈ ${F.toExponential(3)} N`;
+    }
+  </script>
+
+  <p><small>Example: Moon acting on Earth → F ≈ 1.1 × 10¹⁹ N</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Tidal effects are not just theoretical — they affect oceans, planetary crusts, and orbital stability.
+    Any theory of gravity must explain them clearly.
+  </p>
+  <p>
+    Harmonia does, without invoking paradoxical “forces on center of mass”.
+    Instead, it reveals tidal effects as field-gradient-induced structural responses within extended systems.
+    This also resolves conceptual problems with tidal acceleration and locking by framing them as dynamic field-symmetry interactions.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    Classical mechanics treats tides as the difference between forces on different parts of an object.
+    But this leads to ambiguities, especially in freely falling frames.
+  </p>
+  <p>
+    Harmonia sees the body as embedded in a spatially varying resonance field.
+    Each region phase-locks differently with R(x), creating internal gradient strain — not due to “net pull”, but due to coherence mismatch.
+  </p>
+  <p>
+    <em>Metaphor:</em> Imagine a long violin string suspended in a field with varying resonance tension.
+    Each section vibrates slightly differently, causing internal deformation and wave distortion — not because it's being “pulled”, but because it's continuously adjusting to the harmonic tension landscape.
+    The deformation is a byproduct of internal coherence alignment, not external pulling.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical (Newton)</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Origin of effect</td>
+      <td>Difference in gravitational force</td>
+      <td>Gradient in R(x) coherence</td>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Force imbalance across body</td>
+      <td>Field alignment mismatch</td>
+    </tr>
+    <tr>
+      <td>Mathematical form</td>
+      <td>F ≈ 2GMmr / d³</td>
+      <td>Same (first-order)</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Net stretch force</td>
+      <td>Resonant gradient deformation</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Tidal Forces and Field Gradient Coupling</li>
+    <li><strong>Model:</strong> Differential Resonance Locking</li>
+    <li><strong>Operator:</strong> O105 (Gradient-Induced Phase Strain)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

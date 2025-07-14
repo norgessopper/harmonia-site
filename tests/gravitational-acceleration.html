@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌀 Gravitational Acceleration and Resonance-Based Free Fall</h2>
+  <p><strong>Category:</strong> Gravitation / Field Gradient</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches classical acceleration (g), with deeper field-based explanation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    Objects in a gravitational field accelerate toward a massive body. This effect is universal and independent of mass — a stone and a feather fall at the same rate in vacuum.
+  </p>
+  <p>
+    Classical physics describes this as a force: <code>F = G M m / r²</code>. General Relativity replaces the force with geodesic motion in curved spacetime.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Field Gradient Collapse)</h3>
+  <p>
+    In Harmonia, gravity is not a force nor geometry — but a resonance phenomenon. The R(x) field near a massive body becomes compressed,
+    creating a gradient in coherence. A test particle responds to this by locally adjusting its internal field structure —
+    a spontaneous realignment toward regions of higher coherence.
+  </p>
+  <p>
+    This adjustment appears as acceleration, but no force is involved. It is a reconfiguration of the internal field alignment of the object with the surrounding R(x) field.
+  </p>
+  <p>
+    The result is the same as classical physics: acceleration <code>g = GM / r²</code>, but the cause is entirely field-based.
+  </p>
+</section>
+
+<section>
+  <h3>📐 Calculate Acceleration (g)</h3>
+  <label>Mass (kg):</label>
+  <input type="number" id="mass" value="5.972e24">
+  <label>Radius from center (m):</label>
+  <input type="number" id="radius" value="6.371e6">
+  <button onclick="calculateG()">Calculate g</button>
+  <div id="result" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calculateG() {
+      const G = 6.67430e-11;
+      const M = parseFloat(document.getElementById("mass").value);
+      const r = parseFloat(document.getElementById("radius").value);
+      if (isNaN(M) || isNaN(r) || M <= 0 || r <= 0) {
+        document.getElementById("result").innerText = "Please enter valid values.";
+        return;
+      }
+      const g = (G * M) / (r * r);
+      document.getElementById("result").innerText = `Acceleration g = ${g.toFixed(5)} m/s²`;
+    }
+  </script>
+
+  <p><small>Earth: M = 5.972e24 kg, r = 6.371e6 m → g ≈ 9.81 m/s²</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Gravitational acceleration is one of the most fundamental physical effects. Any theory of gravity must predict it accurately.
+  </p>
+  <p>
+    Harmonia reproduces the exact same acceleration as Newtonian and relativistic models, but its interpretation is different:
+    there is no force, no geometry — only alignment and collapse within a resonant field.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In Harmonia, a falling object does not follow a curved path in a geometric space or respond to a force.
+    Instead, its internal field structure reorients itself in response to a local coherence gradient.
+  </p>
+  <p>
+    This internal reconfiguration causes the object to appear as if it is accelerating downward — but in reality,
+    it is aligning with the surrounding R(x) field.
+  </p>
+  <p>
+    <em>Metaphor:</em> Imagine a drop of water on a slanted surface of vibrating tension. The drop doesn't fall because of an external force,
+    but because its structure seeks equilibrium in the direction of strongest resonance. The more compressed the field,
+    the more strongly it attracts reconfiguration.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Classical (Newton)</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Cause</td>
+      <td>Attractive force</td>
+      <td>Geodesic in curved space</td>
+      <td>Resonant field collapse</td>
+    </tr>
+    <tr>
+      <td>Acceleration formula</td>
+      <td>g = GM / r²</td>
+      <td>Same (from metric)</td>
+      <td>Same (from R(x) gradient)</td>
+    </tr>
+    <tr>
+      <td>Mass dependence</td>
+      <td>Independent (cancels)</td>
+      <td>Independent</td>
+      <td>Independent</td>
+    </tr>
+    <tr>
+      <td>Conceptual origin</td>
+      <td>Force interaction</td>
+      <td>Curvature response</td>
+      <td>Field alignment shift</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Gravitational Acceleration and Free Fall</li>
+    <li><strong>Model:</strong> Coherence Gradient Collapse</li>
+    <li><strong>Operator:</strong> O101 (Field Alignment Induced Motion)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

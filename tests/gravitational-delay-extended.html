@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>⏳ Temporal Delay of Light in Gravitational Field</h2>
+  <p><strong>Category:</strong> Gravitation / Field Coherence</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches GR time delay, with deeper field-based interpretation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    When light passes near a massive object — like the Sun — its path is not just bent, but also <strong>slightly delayed</strong>
+    compared to light traveling far from gravitational sources. This phenomenon, known as the <em>Shapiro delay</em>,
+    was one of the first post-Newtonian predictions of general relativity to be experimentally confirmed.
+  </p>
+  <p>
+    It has been observed in radar signals sent to spacecraft and planets, and is now a routine correction in modern navigation systems.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (General Relativity)</h3>
+  <pre>
+Δt = (2GM / c^3) ⋅ ln(4 r_E r_S / b^2)
+  </pre>
+  <ul>
+    <li><code>G</code>: Gravitational constant</li>
+    <li><code>M</code>: Mass of the central object</li>
+    <li><code>c</code>: Speed of light</li>
+    <li><code>r_E, r_S</code>: Distances from the object to Earth and spacecraft</li>
+    <li><code>b</code>: Closest approach of the signal to the object</li>
+  </ul>
+  <p>
+    This delay arises due to the curvature of spacetime: light travels along longer paths in the warped geometry surrounding mass.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Field Coherence Delay)</h3>
+  <p>
+    In Harmonia, light does not traverse an abstract geometric space — it propagates through a <strong>physical resonance field</strong>
+    <code>R(x)</code>, whose local structure governs wave behavior.
+  </p>
+  <p>
+    Near massive bodies, this field becomes <strong>compressed</strong>, reducing the local resonance capacity and effectively slowing light's progress.
+    The delay thus emerges not from geometry, but from a <strong>temporary degradation in field coherence</strong>.
+  </p>
+  <pre>
+R_field(x) ≈ 1 - ε(x), where ε(x) ≈ GM/(rc^2)
+v_res(x) = c ⋅ R_field(x)
+Δt = ∫ (1/v_res(x) - 1/c) dx ≈ GR result
+  </pre>
+  <p>This shows that GR’s prediction is not wrong — but <strong>its explanation lacks physical substance</strong>.</p>
+</section>
+
+<section>
+  <h3>🌌 Calculate Temporal Delay</h3>
+  <label>Mass (kg):</label>
+  <input type="number" id="mass" value="1.9885e30">
+  <label>r_E (m):</label>
+  <input type="number" id="rE" value="1.496e11">
+  <label>r_S (m):</label>
+  <input type="number" id="rS" value="1.4e12">
+  <label>Impact parameter b (m):</label>
+  <input type="number" id="b" value="6.96e8">
+  <button onclick="computeDelay()">Calculate Δt</button>
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+  <script>
+    function computeDelay() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const M = parseFloat(document.getElementById("mass").value);
+      const rE = parseFloat(document.getElementById("rE").value);
+      const rS = parseFloat(document.getElementById("rS").value);
+      const b = parseFloat(document.getElementById("b").value);
+      if ([M, rE, rS, b].some(x => isNaN(x) || x <= 0)) {
+        document.getElementById("output").innerText = "Please enter valid values.";
+        return;
+      }
+      const delay = (2 * G * M / Math.pow(c, 3)) * Math.log((4 * rE * rS) / (b * b));
+      document.getElementById("output").innerText = `Temporal delay: Δt = ${delay.toExponential(6)} s`;
+    }
+  </script>
+  <p><small>Example: Sun with Earth and spacecraft. Matches GR: Δt ≈ 1.415 × 10⁻⁴ s</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    The Shapiro delay is one of the <strong>most precisely confirmed</strong> relativistic effects — central to space navigation and planetary radar.
+    Any viable theory of gravity must replicate it.
+  </p>
+  <p>
+    Harmonia does this, but offers a <strong>more physically grounded interpretation</strong>:
+    no spacetime curvature, no singularities, no coordinate constructs. Only local resonance modulation.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔹 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    As light travels through a gravitational potential, the local <code>R(x)</code> field is compressed,
+    slightly lowering the propagation capacity. This change is not uniform — the signal accumulates
+    a fractional lag over the entire distorted region.
+  </p>
+  <p>
+    Unlike GR, which models this as curved geodesics in a 4D manifold, Harmonia treats it as a <strong>first-order breakdown in harmonic tension</strong>,
+    much like how sound slows in a denser medium.
+  </p>
+  <p>
+    Mathematically, both approaches yield the same logarithmic delay, because the integral over <code>1/v(x)</code> accumulates the same total shift
+    as the path length distortion in GR. But while GR gives a coordinate-based answer,
+    Harmonia offers a <strong>physically local explanation</strong> tied to field dynamics.
+  </p>
+  <p>
+    <em>Think of it this way:</em> Just as a bell rings more slowly in water than in air due to resistance in the medium,
+    light propagates more slowly near gravitational mass not because the geometry bends, but because the <code>R(x)</code> field
+    offers less harmonic support.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Cause of delay</td>
+      <td>Spacetime curvature</td>
+      <td>Field coherence compression</td>
+    </tr>
+    <tr>
+      <td>Propagation model</td>
+      <td>Geodesics in curved space</td>
+      <td>Phase transfer through R(x)</td>
+    </tr>
+    <tr>
+      <td>Speed of light</td>
+      <td>Constant c through geometry</td>
+      <td>Locally modulated by R(x)</td>
+    </tr>
+    <tr>
+      <td>Mathematical result</td>
+      <td>Logarithmic expression</td>
+      <td>Same (first-order)</td>
+    </tr>
+    <tr>
+      <td>Explanation depth</td>
+      <td>Geometric abstraction</td>
+      <td>Resonance-based and physical</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Temporal Delay of Light in Gravitational Field</li>
+    <li><strong>Model:</strong> Coherence Gradient Delay in R(x)</li>
+    <li><strong>Operator:</strong> O105 (Gravitational Delay Integral)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

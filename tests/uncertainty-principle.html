@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>📉 Uncertainty Principle as Field Overlap Constraint</h2>
+  <p><strong>Category:</strong> Quantum Mechanics / Field Overlap Constraint</p>
+  <p><strong>Prediction Match:</strong> ✅ Reproduces Δx·Δp ≥ ℏ/2, with field-resonance interpretation</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    In standard quantum mechanics, the Heisenberg uncertainty principle states that position and momentum cannot both be simultaneously well-defined beyond a lower bound.
+    The minimal product of their uncertainties is:
+  </p>
+  <pre>
+Δx · Δp ≥ ℏ / 2
+  </pre>
+  <p>
+    This arises from the non-commuting nature of the operators for position and momentum in the quantum formalism.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Localization–Bandwidth Constraint)</h3>
+  <p>
+    In Harmonia, uncertainty does not arise from limitations of measurement or operator algebra, but from the intrinsic trade-off between spatial localization and spectral confinement in the R(x) field.
+    A particle is a resonance node — tightly localized nodes require broad field excitation in momentum space, and vice versa.
+  </p>
+  <p>
+    The uncertainty principle is thus a constraint on how sharply a resonance can be defined in both position and momentum simultaneously.
+    It emerges from the spectral limits of harmonic field structure — not from probabilistic epistemology.
+  </p>
+</section>
+
+<section>
+  <h3>📐 Estimate Minimum Uncertainty</h3>
+  <label>Estimated Δx (m):</label>
+  <input type="number" id="dx" value="1e-10">
+  <button onclick="calcUncertainty()">Compute</button>
+  <div id="uncertaintyOut" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcUncertainty() {
+      const dx = parseFloat(document.getElementById("dx").value);
+      if (dx <= 0 || isNaN(dx)) {
+        document.getElementById("uncertaintyOut").innerText = "Please enter a positive Δx value.";
+        return;
+      }
+      const hbar = 1.05457e-34;
+      const dp = hbar / (2 * dx);
+      document.getElementById("uncertaintyOut").innerText = `Minimum Δp ≈ ${dp.toExponential(3)} kg·m/s`;
+    }
+  </script>
+
+  <p><small>Example: Δx = 1 Å → Δp ≥ 5.27 × 10⁻²⁵ kg·m/s</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    The uncertainty principle is foundational to quantum theory — but is often presented as a statement about limitations of knowledge.
+    Harmonia reframes it as a structural consequence of resonance: a physical constraint on how narrowly a node can be defined in the R(x) field without losing spectral integrity.
+  </p>
+  <p>
+    This makes uncertainty not a quantum mystery, but a natural outcome of harmonic field coherence.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In standard QM, uncertainty is derived from Fourier transforms and the commutator [x, p] = iℏ.
+    But this formalism gives no intuitive explanation of *why* these limits exist.
+  </p>
+  <p>
+    Harmonia offers a field-based answer: sharp localization requires destructive interference of many wave modes (i.e. a broad spectral footprint),
+    while a well-defined momentum state demands smooth, extended coherence.
+  </p>
+  <p>
+    <em>Metaphor:</em> Like tuning a drumhead: the more tightly you pinch a point, the more harmonics are needed to define it —
+    and the less stable or clear the resulting tone. Harmonia’s uncertainty reflects this same spectral–spatial tradeoff in field resonance.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Quantum Mechanics</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Origin</td>
+      <td>Operator non-commutativity</td>
+      <td>Harmonic field constraint</td>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>Δx · Δp ≥ ℏ/2</td>
+      <td>Same, reinterpreted via field resonance logic</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Measurement limitation</td>
+      <td>Field mode coherence tradeoff</td>
+    </tr>
+    <tr>
+      <td>Ontology</td>
+      <td>Wavefunction amplitude & uncertainty</td>
+      <td>Phase-locked node with coherence bandwidth</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Uncertainty Principle as Field Overlap Constraint</li>
+    <li><strong>Model:</strong> Coherence-Bandwidth Coupling</li>
+    <li><strong>Operator:</strong> O113 (Resonance Spectral Extent)</li>
+    <li><strong>Reference Modules:</strong> H211–H215, O111–O115</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

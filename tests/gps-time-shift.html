@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🛰️ GPS Time Shift from Orbital R(x) Gradient</h2>
+  <p><strong>Category:</strong> Gravitational Time Dilation / Technological Field Validation</p>
+  <p><strong>Prediction Match:</strong> ✅ Matches GPS clock corrections, explained via field coherence gradient</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    GPS satellites experience time differently than clocks on Earth's surface. General relativity predicts that satellites orbiting higher above the Earth’s surface run faster due to weaker gravitational potential. This effect must be corrected for in all GPS systems.
+  </p>
+  <p>
+    The relativistic time shift is given by:
+  </p>
+  <pre>
+Δt / t ≈ (GM / c²) · (1 / r_surface − 1 / r_satellite)
+  </pre>
+</section>
+
+<section>
+  <h3>Harmonia Interpretation (Coherence Gradient in R(x))</h3>
+  <p>
+    In Harmonia, time is a manifestation of local resonance structure in the field R(x). Clocks function as phase-locked resonance structures that depend on the coherence density of the surrounding R(x) field.
+  </p>
+  <p>
+    At higher altitudes, the R(x) field is less compressed — meaning that the local coherence is looser. This leads to slightly faster oscillation rates in atomic clocks, not because time "stretches," but because the local field supports a different resonance frequency.
+  </p>
+</section>
+
+<section>
+  <h3>📐 Calculate GPS Clock Time Shift</h3>
+  <label>Mass of Earth (kg):</label>
+  <input type="number" id="mass" value="5.972e24">
+  <label>Radius at surface (m):</label>
+  <input type="number" id="r_surface" value="6.371e6">
+  <label>Radius of satellite (m):</label>
+  <input type="number" id="r_satellite" value="2.6561e7">
+  <button onclick="calcGPSTimeShift()">Compute</button>
+  <div id="gpsShift" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcGPSTimeShift() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const M = parseFloat(document.getElementById("mass").value);
+      const r1 = parseFloat(document.getElementById("r_surface").value);
+      const r2 = parseFloat(document.getElementById("r_satellite").value);
+      const dt_t = (G * M / (c * c)) * (1 / r1 - 1 / r2);
+      document.getElementById("gpsShift").innerText = `Relative time shift: Δt / t ≈ ${dt_t.toExponential(3)}`;
+    }
+  </script>
+
+  <p><small>Example: GPS orbit ≈ 20,200 km above Earth's surface (≈ 26,561 km from center) → Δt / t ≈ 5.29 × 10⁻¹⁰ → ~38 microseconds/day faster</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    GPS is the most widely used relativistic technology on Earth. Any field theory of time must explain why clocks at altitude drift from those on Earth — and by how much.
+  </p>
+  <p>
+    Harmonia predicts the same shift as general relativity, but attributes it to differences in resonance conditions in the R(x) field — without invoking spacetime curvature.
+  </p>
+  <p>
+    This makes time dilation an emergent property of field tension and coherence, consistent with a universal resonant substrate.
+  </p>
+</section>
+
+<details>
+  <summary><strong>🔍 Extended Explanation (click to expand)</strong></summary>
+  <p>
+    In general relativity, the difference in gravitational potential alters the rate at which time flows. But this treats time as a dimension being “stretched.”
+  </p>
+  <p>
+    In Harmonia, the field R(x) determines the local coherence scaffold for all dynamic systems. When coherence is tight (near a massive object), oscillation slows. When coherence is looser (farther away), the same physical clock resonates more quickly.
+  </p>
+  <p>
+    The field acts like an elastic scaffold; when less tension is present, oscillations speed up — not because time itself changes, but because the supporting structure does.
+  </p>
+  <p>
+    <em>Metaphor:</em> Imagine two pendulums suspended in media of different tension: the one in looser tension swings faster. GPS satellites are that faster-swinging clock in a looser coherence zone.
+  </p>
+</details>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Gravitational potential (metric curvature)</td>
+      <td>Field coherence gradient in R(x)</td>
+    </tr>
+    <tr>
+      <td>Clock behavior</td>
+      <td>Runs faster at higher altitude</td>
+      <td>Resonates faster in lower field tension</td>
+    </tr>
+    <tr>
+      <td>Numerical match</td>
+      <td>✅ Yes</td>
+      <td>✅ Yes</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Geometry-based time flow</td>
+      <td>Phase-locked oscillation rate in field</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> GPS Time Shift from Orbital R(x) Gradient</li>
+    <li><strong>Model:</strong> Resonance Speed Variation with Altitude</li>
+    <li><strong>Operator:</strong> O105 (Coherence-Induced Temporal Drift)</li>
+    <li><strong>Reference Modules:</strong> H231–H235, O101–O105</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

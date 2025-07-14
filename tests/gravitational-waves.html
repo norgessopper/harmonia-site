@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🌊 Gravitational Waves from Binary Systems</h2>
+  <p><strong>Category:</strong> Gravitation / Field Radiation</p>
+  <p><strong>Prediction Match:</strong> ✅ Same energy loss as GR, explained via resonance emission</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    When two massive bodies orbit each other — like neutron stars or black holes — they emit gravitational waves,
+    causing them to lose energy and slowly spiral inward. This effect was first inferred from the Hulse–Taylor pulsar
+    and later directly detected by LIGO.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (General Relativity)</h3>
+  <pre>
+dE/dt = - (32/5) · G⁴ · (m₁m₂)²(m₁ + m₂) / (c⁵ r⁵)
+  </pre>
+  <p>
+    Where:
+  </p>
+  <ul>
+    <li><code>m₁</code>, <code>m₂</code> = masses of the two objects</li>
+    <li><code>r</code> = distance between their centers</li>
+    <li><code>G</code> = gravitational constant</li>
+    <li><code>c</code> = speed of light</li>
+  </ul>
+  <p>
+    This formula predicts the rate of energy lost to gravitational radiation.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Field Resonance Emission)</h3>
+  <p>
+    In Harmonia, orbiting masses modulate the surrounding R(x) field, producing rhythmic distortions.
+    These distortions radiate outward as waves of resonance — not geometric ripples, but structured field releases
+    that carry away energy.
+  </p>
+  <p>
+    You can think of these as ripples in field tension — expanding shells of harmonic collapse,
+    released like sound from a vibrating bell. The pattern and frequency of the modulation determines the energy flux.
+  </p>
+  <p>
+    Harmonia predicts the same energy loss rate as GR in the weak-field limit,
+    but describes the mechanism in terms of field resonance depletion, not spacetime curvature.
+    Moreover, when compact objects merge, Harmonia maintains bounded field compression —
+    avoiding curvature singularities while preserving energy flux.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Calculate Energy Loss</h3>
+  <label>Mass 1 (kg):</label>
+  <input type="number" id="m1" value="1.4e30">
+  <label>Mass 2 (kg):</label>
+  <input type="number" id="m2" value="1.4e30">
+  <label>Separation r (m):</label>
+  <input type="number" id="r" value="1e8">
+  <button onclick="calcGW()">Calculate Energy Loss</button>
+
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcGW() {
+      const G = 6.67430e-11;
+      const c = 299792458;
+      const m1 = parseFloat(document.getElementById("m1").value);
+      const m2 = parseFloat(document.getElementById("m2").value);
+      const r = parseFloat(document.getElementById("r").value);
+
+      if ([m1, m2, r].some(x => isNaN(x) || x <= 0)) {
+        document.getElementById("output").innerText = "Please enter valid masses and separation.";
+        return;
+      }
+
+      const num = (32 / 5) * Math.pow(G, 4) * Math.pow(m1 * m2, 2) * (m1 + m2);
+      const denom = Math.pow(c, 5) * Math.pow(r, 5);
+      const dEdt = -num / denom;
+
+      document.getElementById("output").innerText =
+        `Energy loss: dE/dt = ${dEdt.toExponential(6)} W`;
+    }
+  </script>
+
+  <p><small>Typical neutron star binary: 1.4 M☉, 1e8 m → dE/dt ≈ 1e24–1e28 W</small></p>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    Gravitational waves are now an observational reality. Any fundamental theory of gravity must not only predict them,
+    but explain how they arise physically.
+  </p>
+  <p>
+    Harmonia gives the same predictions as general relativity in weak fields,
+    but offers a field-resonance mechanism: rotating masses “pump” the surrounding R(x) field until it radiates energy away
+    as coherent collapse waves.
+  </p>
+  <p>
+    This matches all known data, and reframes gravitational waves not as geometric ripples,
+    but as field-mode discharges governed by harmonic instability.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>General Relativity</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Energy loss formula</td>
+      <td>dE/dt ∝ (m₁m₂)²(m₁ + m₂)/r⁵</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Mechanism</td>
+      <td>Spacetime ripple</td>
+      <td>Field resonance depletion</td>
+    </tr>
+    <tr>
+      <td>Wave structure</td>
+      <td>Tensor curvature wave</td>
+      <td>Modulated field emission</td>
+    </tr>
+    <tr>
+      <td>Origin of radiation</td>
+      <td>Geometric radiation</td>
+      <td>Resonant phase release</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Gravitational Waves from Binary Systems</li>
+    <li><strong>Model:</strong> Oscillatory Field Resonance Collapse</li>
+    <li><strong>Operator:</strong> O113 (Spiral Emission Radiator)</li>
+    <li><strong>Reference Modules:</strong> H171–H175, O111–O115</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>

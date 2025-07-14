@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Harmonia Test Results</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6fdf7;
+      color: #123524;
+      margin: 0;
+    }
+    header {
+      background-color: #e0f2e9;
+      padding: 1rem 0;
+      border-bottom: 2px solid #b4dec9;
+    }
+    header .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #0a4d2f;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0e6840;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    input[type=range] {
+      width: 100%;
+    }
+    canvas {
+      background: #f1f8f5;
+      border-radius: 12px;
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #bce3d0;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e9f9f1;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #cde8da;
+      margin-top: 2rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Harmonia Test Results</h1>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/tests/index.html">Tests</a></li>
+        <li><a href="/about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>🎼 Harmonic Oscillator Energy Levels</h2>
+  <p><strong>Category:</strong> Quantum Mechanics / Field Resonance</p>
+  <p><strong>Prediction Match:</strong> ✅ Same quantized levels, explained via field structure</p>
+</section>
+
+<section>
+  <h3>Overview</h3>
+  <p>
+    The quantum harmonic oscillator is one of the most important systems in physics.
+    It describes vibrations in molecules, phonons in solids, and is the foundation of quantum field theory.
+    The energy levels are equally spaced and include a non-zero minimum energy — the “zero-point energy”.
+  </p>
+</section>
+
+<section>
+  <h3>Classical Prediction (Quantum Mechanics)</h3>
+  <pre>
+Eₙ = (n + ½) · ℏω
+  </pre>
+  <p>
+    Where:
+  </p>
+  <ul>
+    <li><code>n</code> = energy level (n = 0, 1, 2, ...)</li>
+    <li><code>ℏ</code> = reduced Planck constant</li>
+    <li><code>ω</code> = angular frequency of the oscillator</li>
+  </ul>
+  <p>
+    These levels emerge from solving Schrödinger’s equation with a quadratic potential.
+  </p>
+</section>
+
+<section>
+  <h3>Harmonia Prediction (Resonant Field Modes)</h3>
+  <p>
+    In Harmonia, there is no point-particle moving inside a curve.
+    Instead, the oscillator is a resonance node in the R(x) field — a standing wave locked into the geometry of harmonic compression.
+  </p>
+  <p>
+    The energy levels arise from allowed standing wave patterns.
+    Each level <code>n</code> corresponds to a stable resonance with <code>n</code> internal nodes.
+    Just like musical harmonics on a string, higher levels reflect more internal structure.
+  </p>
+  <p>
+    The ground state is not “zero energy” because a collapsed field always maintains a minimum internal tension —
+    this is the origin of the <code>½ ℏω</code> term: not a mystery, but a structural floor of resonance energy.
+  </p>
+</section>
+
+<section>
+  <h3>🎛️ Calculate Energy Level</h3>
+  <label>Angular frequency (ω):</label>
+  <input type="number" id="omega" value="1.0" step="0.01">
+  <label>Level n:</label>
+  <input type="number" id="n" value="0" min="0">
+  <button onclick="calcEnergy()">Calculate Energy</button>
+
+  <div id="output" style="margin-top: 1rem; font-weight: bold;"></div>
+
+  <script>
+    function calcEnergy() {
+      const hbar = 1.054571817e-34;
+      const omega = parseFloat(document.getElementById("omega").value);
+      const n = parseInt(document.getElementById("n").value);
+
+      if (isNaN(omega) || isNaN(n) || n < 0) {
+        document.getElementById("output").innerText = "Please enter valid ω and n.";
+        return;
+      }
+
+      const E = hbar * omega * (n + 0.5);
+      document.getElementById("output").innerText =
+        `Energy level Eₙ = ${(E).toExponential(6)} J`;
+    }
+  </script>
+</section>
+
+<section>
+  <h3>Why This Test Matters</h3>
+  <p>
+    The harmonic oscillator appears in nearly every branch of physics.
+    Its energy levels are among the first confirmations of quantum theory.
+    Any unified model must reproduce them — and explain their origin.
+  </p>
+  <p>
+    Harmonia does both: it predicts the same values as standard quantum mechanics,
+    but explains them as structural resonances in the field —
+    not abstract eigenvalues from Hilbert space, but the direct consequence of real physical constraints in R(x).
+  </p>
+  <p>
+    The zero-point energy is not symbolic — it's the minimal energy needed to hold the field in a coherent state.
+  </p>
+</section>
+
+<section>
+  <h3>Comparison Table</h3>
+  <table>
+    <tr>
+      <th>Aspect</th>
+      <th>Quantum Mechanics</th>
+      <th>Harmonia</th>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>Eₙ = (n + ½) ℏω</td>
+      <td>Same</td>
+    </tr>
+    <tr>
+      <td>Quantization origin</td>
+      <td>Operator eigenvalues</td>
+      <td>Stable resonance patterns</td>
+    </tr>
+    <tr>
+      <td>Zero-point energy</td>
+      <td>Mathematical artifact</td>
+      <td>Minimal field tension</td>
+    </tr>
+    <tr>
+      <td>Interpretation</td>
+      <td>Wavefunction solution</td>
+      <td>Field resonance node</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h3>Formalization</h3>
+  <ul>
+    <li><strong>Test Name:</strong> Harmonic Oscillator Energy Levels</li>
+    <li><strong>Model:</strong> Resonant Mode Collapse in Bounded R(x)</li>
+    <li><strong>Operator:</strong> O112 (Harmonic Node Quantization)</li>
+    <li><strong>Reference Modules:</strong> H156–H160, O111–O115</li>
+  </ul>
+</section>
+
+</main>
+
+
+<footer>
+  <p>&copy; 2025 Harmonia Initiative. Resonant Science for a Coherent Future.</p>
+</footer>
+
+</body>
+</html>
