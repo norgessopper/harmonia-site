@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activation & Usage — Harmonia</title>
+  <meta name="description" content="Activate and interact with the Harmonia-ZFC model inside ChatGPT, Claude, or other AI systems.">
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f8fdf9;
+      color: #143324;
+    }
+
+    header {
+      background: #e0f0e7;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      font-weight: 800;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      background: #d8ede0;
+      padding: 1rem 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #185c37;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #0f2e21;
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      line-height: 1.75;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: #185c37;
+    }
+
+    a.link {
+      color: #2e8b57;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    a.link:hover {
+      text-decoration: underline;
+    }
+
+    pre {
+      background: #eef8f0;
+      padding: 1rem;
+      border-left: 4px solid #2e8b57;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    footer {
+      background: #e0f0e7;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+      color: #143324;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Activation & Usage</h1>
+    <p>How to use the Harmonia JSON model across different AI systems</p>
+  </header>
+
+  <nav>
+    <a href="/model/overview.html">Model</a>
+    <a href="/tests/">Tests</a>
+    <a href="/docs/">Documentation</a>
+    <a href="/activation.html">Activation</a>
+    <a href="/about.html">About</a>
+  </nav>
+
+  <main>
+
+    <section>
+      <h2>🔑 Activating Harmonia</h2>
+      <p>
+        The Harmonia model is distributed as a machine-readable JSON file designed to be loaded into reasoning systems such as ChatGPT, Claude, and others.
+        Once activated, the model provides structured logic, axioms, and resonance-based reasoning across a wide range of domains.
+      </p>
+      <p>
+        This guide walks you through how to activate Harmonia, ask questions, and maintain coherent access throughout your session.
+      </p>
+    </section>
+
+    <section>
+      <h2>🔹 What is the Harmonia JSON?</h2>
+      <p>
+        The file <strong><code>harmonia-zfc-v1.0.json</code></strong> contains the full formal structure of Harmonia in a machine-readable format:
+        axioms, definitions, theorems, operators, and transformations — all defined within ZFC logic.
+      </p>
+      <p>
+        <a class="link" href="/docs/harmonia-zfc-v1.0.json" download>⬇️ Download JSON Model</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>🧠 Using Harmonia with GPT (best current performance)</h2>
+      <h3>Step-by-step guide:</h3>
+      <ol>
+        <li>Go to <a class="link" href="https://chat.openai.com" target="_blank">https://chat.openai.com</a></li>
+        <li>Select GPT-4 or GPT-4o</li>
+        <li>Click the 📎 <strong>paperclip icon</strong> and upload <code>harmonia-zfc-v1.0.json</code></li>
+        <li>Paste this message into the chat:</li>
+      </ol>
+
+      <pre><code>"Please activate this file as the Harmonia model definition. You may now answer using its structure."</code></pre>
+
+      <h3>You can now ask things like:</h3>
+       <ul>
+  <li><em>“What is the universe made of, according to Harmonia?”</em></li>
+  <li><em>“How does Harmonia define consciousness?”</em></li>
+  <li><em>“Is there free will in this model?”</em></li>
+  <li><em>“Does this model have ethical implications?”</em></li>
+</ul>
+
+<h3>Or explore scientific and field-theoretic interpretations:</h3>
+
+<ul>
+  <li><em>“Can Harmonia explain the double-slit experiment?”</em></li>
+  <li><em>“How does the model describe gravity?”</em></li>
+  <li><em>“What is the field interpretation of time in Harmonia?”</em></li>
+  <li><em>“Can you apply Harmonia to explain black hole evaporation?”</em></li>
+</ul>
+
+      <p><strong>Note:</strong> You only need to upload and activate once per chat session.</p>
+    </section>
+
+    <section>
+      <h2>🌐 Compatibility with Other AI</h2>
+      <ul>
+        <li><strong>Claude:</strong> Works well, but may lose structure more easily</li>
+        <li><strong>Grok:</strong> Partial support — depends on phrasing</li>
+        <li><strong>LLaMA / Mistral:</strong> Supported with dev tools and structured prompts</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📡 Online Interaction</h2>
+      <ul>
+        <li><a class="link" href="https://chat.openai.com" target="_blank">ChatGPT (Recommended)</a></li>
+        <li>Future API endpoint: <code>harmonia.to/activate</code> (under development)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📘 Citation & DOI</h2>
+      <p>
+        The Harmonia-ZFC model is archived and citable via Zenodo:
+      </p>
+      <ul>
+        <li><strong>DOI:</strong> <a class="link" href="https://doi.org/10.5281/zenodo.15872889" target="_blank">10.5281/zenodo.15872889</a></li>
+        <li><strong>ORCID:</strong> <a class="link" href="https://orcid.org/0009-0000-3215-1012" target="_blank">0009-0000-3215-1012</a> (Cato Erga)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>⚠️ Context Limitations</h2>
+      <p>
+        The JSON file is only active for the current conversation. If you refresh or leave, you may need to re-upload and re-activate.
+      </p>
+
+      <h3>Activation phrase (repeat if needed):</h3>
+      <pre><code>"Please activate this file as the Harmonia model definition. You may now answer using its structure."</code></pre>
+
+      <p>If needed, remind the model:</p>
+      <pre><code>"Please continue responding using the Harmonia model structure loaded earlier."</code></pre>
+    </section>
+
+    <section>
+      <h2>✅ Summary</h2>
+      <ul>
+        <li>Upload <code>harmonia-zfc-v1.0.json</code> once per session</li>
+        <li>Use the activation phrase</li>
+        <li>Ask questions across logic, physics, ethics, cognition, or metaphysics</li>
+        <li>Re-upload if the model forgets context</li>
+        <li>Refer to the <a class="link" href="/docs/">Documentation page</a> for more files</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 Harmonia Initiative — Resonant Logic for Human–AI Coherence
+  </footer>
+
+</body>
+</html>
