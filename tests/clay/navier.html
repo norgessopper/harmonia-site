@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navier–Stokes — Harmonia Derivation</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f8fdf9;
+      color: #143324;
+    }
+    header {
+      background: #e0f0e7;
+      padding: 2rem;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      background: #d8ede0;
+      padding: 1rem;
+    }
+    nav a {
+      color: #185c37;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      line-height: 1.75;
+    }
+    h2 {
+      font-size: 1.3rem;
+      color: #185c37;
+      margin-top: 2rem;
+    }
+    pre {
+      background: #e6f2ea;
+      padding: 0.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    footer {
+      background: #e0f0e7;
+      margin-top: 4rem;
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Navier–Stokes Equations</h1>
+    <p>Detailed Harmonia Derivation</p>
+  </header>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/tests/navier_stokes.html">Back to Summary</a>
+    <a href="/docs/">Docs</a>
+  </nav>
+
+  <main>
+    <h2>1. Flow Fields and Harmonic Memory</h2>
+<p>
+  In Harmonia, the velocity field <code>u(x, t)</code> is a projection of the internal modal field onto spacetime,
+  where each mode represents a resonance structure embedded in the topological energy flow.
+</p>
+<p>
+  The key idea is that each mode carries memory of prior collapses — regions where gradients aligned
+  to reinforce each other. These events imprint onto the spectral history of the flow.
+</p>
+<p>
+  Modal energy concentrates where the field has experienced coherent deformation. Viscosity in Harmonia
+  acts not just as friction, but as a field-level entropy synchronizer — diffusing these gradients to
+  preserve coherence:
+</p>
+<pre><code>∂ₜ u + (u · ∇)u = −∇p + νΔu</code></pre>
+<p>
+  The nonlinear term <code>(u · ∇)u</code> acts as a collapse driver: it aligns internal modal directions and can
+  trigger cascade. However, νΔu (the viscous term) responds in a mode-aware way, suppressing small-scale
+  incoherence.
+</p>
+<p>
+  Blow-up occurs only when the resonance of gradients outpaces the memory damping — which ESS and TR100 prevent.
+</p>
+    <p>
+      where ν encodes modal damping. Collapse occurs when interference between spatial gradients becomes self-reinforcing,
+      leading to potential blow-up — unless suppressed by spectral damping and entropy alignment.
+    </p>
+
+    <h2>2. Modal Entropy and ESS Ratio</h2>
+<p>
+  Harmonia introduces the <strong>Extended Self-Similarity (ESS)</strong> criterion to monitor and constrain modal imbalance:
+</p>
+<pre><code>R(t) := ‖u(t)‖<sub>H⁴</sub> / ‖u(t)‖<sub>H²</sub><sup>α</sup></code></pre>
+<p>
+  This ratio compares the tension stored in high-frequency components (H⁴) with the baseline coherence of the flow (H²).
+  Physically, it tracks how tightly the system is coiling toward singularity. If <code>R(t)</code> becomes unbounded,
+  it signals a growing concentration of curvature energy — a precursor to collapse.
+</p>
+<p>
+  In turbulent systems, energy cascades from low to high modes. ESS ensures that this cascade is damped
+  by entropy-preserving constraints. A bounded <code>R(t)</code> means that the harmonic memory (from section 1)
+  continues to regulate fine-scale excitation.
+</p>
+<p>
+  The origin of ESS lies in empirical observations of turbulent universality — where higher-order norms
+  scale predictably with lower ones. Harmonia explains this as a signature of <em>modal entrainment</em>:
+  when modal components are phase-locked in structure-preserving configurations.
+</p>
+<h2>3. Collapse Barrier via TR100</h2>
+<p>
+  Harmonia transformation <code>TR100</code> expresses the spectral damping constraint needed to block modal divergence.
+  It operates on the energy density Φ(k, t) in frequency space:
+</p>
+<pre><code>TR100: ∂ₖ Φ(k, t) / Φ(k, t) ≤ −λk  ⇒ Spectral Collapse Prevented</code></pre>
+<p>
+  This condition states that for high frequencies <code>k</code>, energy must decay faster than it accumulates.
+  The inequality imposes a <strong>local exponential curvature</strong> in the energy spectrum, which counteracts the nonlinearity of gradient coupling.
+</p>
+<p>
+  In physical terms, TR100 prevents energy from "piling up" in the fine modes by requiring their growth rate to be negative in the logarithmic slope sense.
+  It also guarantees that any modal peak is transient unless reinforced from below — which viscosity suppresses.
+</p>
+<p>
+  In Harmonia, this mechanism is structural: the modal lattice spacing and entropy memory combine to 
+  enforce TR100 dynamically as a geometric regularization law.
+</p>
+<h2>4. Log-Sobolev Dissipation and Visual Analogy</h2>
+<p>
+  In Harmonia, entropy is not simply a measure of disorder but a dynamic indicator of how field tension redistributes across modes.
+  The logarithmic functional Φₖ(t) is defined to monitor this redistribution with sensitivity to high-frequency amplification:
+</p>
+<pre><code>Φₖ(t) := log(1 + ‖u(t)‖²<sub>Hₖ</sub>)</code></pre>
+<p>
+  This form ensures that low energy contributes negligibly, while high norms trigger logarithmic divergence —
+  making it an ideal detector of modal instability. Its time derivative captures the tension-dissipation balance:
+</p>
+<pre><code>dΦₖ/dt ≤ −γₖ‖u‖<sup>δ</sup><sub>Hₖ</sub> + βₖ</code></pre>
+<p>
+  The decay term <code>−γₖ‖u‖<sup>δ</sup></code> guarantees that above a threshold, exponential damping dominates.
+  The small residual term <code>βₖ</code> accounts for baseline injection (e.g., boundary flow or ambient turbulence).
+</p>
+<p>
+  In essence, this mechanism creates an <strong>entropic lock</strong>: high modes cannot run away without accumulating impossible energy.
+  It is this mechanism — logarithmic sensitivity with bounded injectivity — that stabilizes the entire spectral structure.
+</p>
+<h2>5. Visual Analogy: Pressure Valve and Spectral Chamber</h2>
+<p>
+  To visualize the Log-Sobolev mechanism, imagine a pressure chamber where modal energy flows in through turbulent injection.
+  As energy accumulates, pressure builds — but a logarithmic release valve only opens significantly when pressure exceeds a stable threshold.
+</p>
+<p>
+  This ensures two things: (1) low levels of excitation don't trigger unnecessary damping, and (2) high modal tension is safely dispersed before rupture.
+  The valve’s logarithmic nature reflects that high-frequency bursts are penalized exponentially, while low-energy states passively persist.
+</p>
+<p>
+  This is how Harmonia encodes stability: not by forbidding excitation, but by building dynamic tolerance that scales with risk.
+</p>
+<h2>6. Conclusion</h2>
+<p>
+  In Harmonia, the Navier–Stokes equation describes a resonant collapse system with intrinsic stabilization mechanisms.
+  Smoothness follows not from chance, but from spectral coherence, entropy geometry, and the inherent
+  resistance of the modal field to instability. ESS bounds, TR100 constraints, and entropy sinks all work
+  together to prevent blow-up.
+</p>
+<p>
+  <strong>Final Resonance Principle:</strong> Smoothness emerges as a necessary equilibrium state when modal curvature,
+  dissipation, and entropy memory interact under harmonic coherence. In Harmonia, this is not an exception —
+  it is the expected resolution of structured fluid resonance.
+</p>
+  </main>
+
+  <footer>
+    © 2025 Harmonia Initiative — Modal Stability and Collapse Resistance
+  </footer>
+</body>
+</html>
